@@ -63,7 +63,7 @@ const AboutPage = () => {
                 My Three Worlds
               </h1>
               <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto md:mx-0">
-              I'm a developer crafting seamless digital experiences, a photographer capturing moments that speak, and an explorer chasing freedom across open roads.
+              I&apos;m a developer crafting seamless digital experiences, a photographer capturing moments that speak, and an explorer chasing freedom across open roads.
               </p>
             </div>
           </div>
