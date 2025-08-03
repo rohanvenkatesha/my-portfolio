@@ -32,7 +32,7 @@ const LiveDemosSection = () => {
           <h2 className="text-4xl font-bold mb-4 gradient-text">
             Interactive Demos
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-xl mx-auto">
             Go beyond static descriptions. I build functional, full-stack applications that you can test and interact with right now.
           </p>
         </div>

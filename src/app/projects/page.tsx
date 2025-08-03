@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import { projects, type Project } from '@/lib/projects';
 import BodyClassName from '../components/BodyClassName';
-// Import icons for the new filters
 import { List, AppWindow, BrainCircuit, CloudCog, SquareTerminal } from 'lucide-react';
 
 const containerVariants = {
@@ -23,7 +22,6 @@ const ProjectsPage = () => {
   const [filter, setFilter] = useState<'All' | Project['category']>('All');
   const [visibleCount, setVisibleCount] = useState(INITIAL_LOAD);
 
-  // Updated filters to be an array of objects with icons
   const filters = [
     { name: 'All' as const, icon: List },
     { name: 'Web App' as const, icon: AppWindow },
@@ -65,8 +63,7 @@ const ProjectsPage = () => {
         </section>
 
         <section>
-          {/* --- NEW SEGMENTED CONTROL SWITCH --- */}
-          <div className="relative flex w-full max-w-2xl mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
+          <div className="relative flex w-full max-w-xs sm:max-w-2xl mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
             {filters.map(f => (
               <button
                 key={f.name}
@@ -88,7 +85,8 @@ const ProjectsPage = () => {
                 )}
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <f.icon size={16} />
-                  <span>{f.name}</span>
+                  {/* This span is now hidden by default and appears on small screens and up */}
+                  <span className="hidden sm:inline">{f.name}</span>
                 </span>
               </button>
             ))}
@@ -108,10 +106,7 @@ const ProjectsPage = () => {
 
           {visibleCount < filteredProjects.length && (
             <div className="mt-16 text-center">
-              <button
-                onClick={loadMore}
-                className="btn btn-secondary"
-              >
+              <button onClick={loadMore} className="btn btn-secondary">
                 Load More
               </button>
             </div>

@@ -14,7 +14,7 @@ const SkillsSection = () => {
           <h2 className="text-4xl font-bold mb-4 gradient-text">
             Core Competencies
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-xl mx-auto">
             A look at the languages, frameworks, and tools I use to bring ideas to life.
           </p>
         </div>

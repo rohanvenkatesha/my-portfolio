@@ -6,7 +6,7 @@ import { MapPin, Code, FileText } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="text-center py-24 md:py-40">
+    <section className="text-center py-24 md:py-20">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -40,7 +40,10 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
           className="text-sm md:text-base text-slate-400 mb-3 tracking-wide uppercase"
         >
-          Crafted by <span className="text-slate-200 font-semibold">Rohan Venkatesha</span> • Software Engineer & Explorer
+          Crafted by <span className="text-slate-200 font-semibold">Rohan Venkatesha</span> 
+          <span className="hidden sm:inline"> • </span>
+          {/* This responsive <br> tag creates a line break only on mobile */}
+          <br className="sm:hidden" /> Software Engineer & Explorer
         </motion.p>
         
         <motion.h1

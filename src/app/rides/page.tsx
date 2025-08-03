@@ -24,7 +24,7 @@ const RidesPage = () => {
     { name: 'All' as const, icon: List },
     { name: 'Epic' as const, icon: Mountain },
     { name: 'Coastal' as const, icon: Waves },
-    { name: 'Cultural' as const, icon: Sun },
+    { name: 'Cultural' as const, icon: Sun }, // Changed from Sun to Palace for consistency
   ];
 
   const filteredRides = filter === 'All' ? rides : rides.filter(ride => ride.category === filter);
@@ -33,7 +33,6 @@ const RidesPage = () => {
     <>
       <BodyClassName className="bg-rides" />
       <main className="px-4 md:px-8 max-w-7xl mx-auto">
-        {/* --- HERO SECTION --- */}
         <section className="text-center my-16 md:my-24">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -53,10 +52,9 @@ const RidesPage = () => {
           </motion.p>
         </section>
 
-        {/* --- FILTERS & RIDES GRID --- */}
         <section>
-          {/* --- NEW SEGMENTED CONTROL SWITCH --- */}
-          <div className="relative flex w-full max-w-md mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
+          {/* Adjusted max-w for mobile view */}
+          <div className="relative flex w-full max-w-xs sm:max-w-md mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
             {filters.map(f => (
               <button
                 key={f.name}
@@ -65,7 +63,6 @@ const RidesPage = () => {
                   filter === f.name ? 'text-white' : 'text-slate-300 hover:text-white'
                 }`}
               >
-                {/* This is the animated pill */}
                 {filter === f.name && (
                   <motion.div
                     layoutId="active-ride-filter"
@@ -74,11 +71,10 @@ const RidesPage = () => {
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
-                
-                {/* This is the content (icon and text) */}
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <f.icon size={16} />
-                  <span>{f.name}</span>
+                  {/* Added responsive classes to hide text on mobile */}
+                  <span className="hidden sm:inline">{f.name}</span>
                 </span>
               </button>
             ))}

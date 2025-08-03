@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
 import TimelineEntry from '../components/TimelineEntry';
 import { workExperience, education } from '@/lib/about-data';
 import { awards } from '@/lib/awards-data';
@@ -41,7 +39,6 @@ const AboutPage = () => {
   return (
     <>
       <BodyClassName className="bg-default" />
-      {/* <Header /> */}
       <main className="px-4 md:px-8 max-w-7xl mx-auto">
 
         {/* --- UNIFIED HERO SECTION --- */}
@@ -63,7 +60,7 @@ const AboutPage = () => {
                 My Three Worlds
               </h1>
               <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto md:mx-0">
-              I&apos;m a developer crafting seamless digital experiences, a photographer capturing moments that speak, and an explorer chasing freedom across open roads.
+                I’m a developer crafting seamless digital experiences, a photographer capturing moments that speak, and an explorer chasing freedom across open roads.
               </p>
             </div>
           </div>
@@ -79,26 +76,26 @@ const AboutPage = () => {
         {/* --- WORK EXPERIENCE SECTION --- */}
         <section className="my-24" id="experience">
           <h2 className="text-center text-4xl font-bold mb-8 gradient-text">Work Experience</h2>
-          <div className="relative flex w-full max-w-lg mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
+          <div className="relative flex w-full max-w-xs sm:max-w-lg mx-auto items-center justify-center rounded-full bg-white/5 border border-white/10 p-1 mb-12">
             {experienceFilters.map(f => (
               <button
                 key={f.name}
                 onClick={() => setExperienceFilter(f.name)}
                 className={`relative w-full rounded-full py-2.5 text-sm font-medium transition-colors ${
-                  experienceFilter === f.name ? 'text-white' : 'text-slate-300 hover:text-white'
+                  experienceFilter === f.name ? 'text-white' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 {experienceFilter === f.name && (
                   <motion.div
                     layoutId="active-experience-filter"
-                    className="absolute inset-0 bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8]"
+                    className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-400"
                     style={{ borderRadius: 9999 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <f.icon size={16} />
-                  <span>{f.name}</span>
+                  <span className="hidden sm:inline">{f.name}</span>
                 </span>
               </button>
             ))}
@@ -125,7 +122,7 @@ const AboutPage = () => {
           <h2 className="text-center text-4xl font-bold mb-16 gradient-text">Awards & Recognition</h2>
           <div className="relative">
             {awards.map((item, index) => (
-              <TimelineEntry 
+              <TimelineEntry
                 id={item.id}
                 key={item.title + index} 
                 title={item.title} 
@@ -157,7 +154,7 @@ const AboutPage = () => {
           </div>
         </motion.section>
       </main>
-      {/* <Footer /> */}
+
     </>
   );
 };
