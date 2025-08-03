@@ -63,7 +63,7 @@ const AboutPage = () => {
                 My Three Worlds
               </h1>
               <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto md:mx-0">
-                I’m a developer crafting seamless digital experiences, a photographer capturing moments that speak, and an explorer chasing freedom across open roads.
+              I'm a developer crafting seamless digital experiences, a photographer capturing moments that speak, and an explorer chasing freedom across open roads.
               </p>
             </div>
           </div>
@@ -144,7 +144,7 @@ const AboutPage = () => {
           <h2 className="text-center text-4xl font-bold mb-12 gradient-text">From Code to Kilometers</h2>
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="text-slate-400 space-y-4 leading-relaxed text-center md:text-left">
-              <p>While my days are spent architecting digital solutions, my spirit comes alive on the open road. For me, motorcycling isn't just a hobby; it's a parallel form of problem-solving. Navigating a winding mountain pass requires the same focus and foresight as debugging a complex piece of code.</p>
+              <p>While my days are spent architecting digital solutions, my spirit comes alive on the open road. For me, motorcycling isn&apos;t just a hobby; it&apos;s a parallel form of problem-solving. Navigating a winding mountain pass requires the same focus and foresight as debugging a complex piece of code.</p>
               <p>Each journey is a story—a collection of challenges, triumphs, and unexpected connections. The lessons learned from a long-distance ride often find their way back into my work, reinforcing principles of resilience, adaptability, and the importance of a well-planned route.</p>
               <Link href="/rides" className="btn btn-secondary mt-6">
                 <MapPin size={20} />
