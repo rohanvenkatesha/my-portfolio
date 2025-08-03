@@ -6,6 +6,7 @@ export type Project = {
   stack: string[];
   href: string;
   featured: boolean;
+  live?: string;
 };
 
 export const projects: Project[] = [
@@ -60,6 +61,7 @@ export const projects: Project[] = [
     "Tailwind CSS"
   ],
   href: "https://github.com/rohanvenkatesha/AI-Resume-and-Job-Description-Analyzer",
+  live: "http://localhost:3000/projects/resume-analyzer",
   featured: true,
 },
   {
