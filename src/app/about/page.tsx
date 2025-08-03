@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 import TimelineEntry from '../components/TimelineEntry';
 import { workExperience, education } from '@/lib/about-data';
 import { awards } from '@/lib/awards-data';
@@ -41,7 +41,7 @@ const AboutPage = () => {
   return (
     <>
       <BodyClassName className="bg-default" />
-      <Header />
+      {/* <Header /> */}
       <main className="px-4 md:px-8 max-w-7xl mx-auto">
 
         {/* --- UNIFIED HERO SECTION --- */}
@@ -77,7 +77,7 @@ const AboutPage = () => {
         </motion.section>
         
         {/* --- WORK EXPERIENCE SECTION --- */}
-        <section className="my-24">
+        <section className="my-24" id="experience">
           <h2 className="text-center text-4xl font-bold mb-8 gradient-text">Work Experience</h2>
           <div className="relative flex w-full max-w-lg mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
             {experienceFilters.map(f => (
@@ -113,7 +113,7 @@ const AboutPage = () => {
         </section>
 
         {/* --- EDUCATION SECTION --- */}
-        <motion.section variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.1 }} className="my-24 max-w-5xl mx-auto">
+        <motion.section variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.1 }} className="my-24 max-w-5xl mx-auto" id="education">
           <h2 className="text-center text-4xl font-bold mb-16 gradient-text">Education</h2>
           <div className="relative">
             {education.map((item, index) => (<TimelineEntry key={index} {...item} />))}
@@ -121,7 +121,7 @@ const AboutPage = () => {
         </motion.section>
 
         {/* --- AWARDS & RECOGNITION SECTION --- */}
-        <motion.section variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }} className="my-24 max-w-5xl mx-auto">
+        <motion.section variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }} className="my-24 max-w-5xl mx-auto" id="awards">
           <h2 className="text-center text-4xl font-bold mb-16 gradient-text">Awards & Recognition</h2>
           <div className="relative">
             {awards.map((item, index) => (
@@ -140,7 +140,7 @@ const AboutPage = () => {
         </motion.section>
 
         {/* --- TRAVEL BIO SECTION --- */}
-        <motion.section variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }} className="my-24">
+        <motion.section variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true }} className="my-24" id="travelbio">
           <h2 className="text-center text-4xl font-bold mb-12 gradient-text">From Code to Kilometers</h2>
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div className="text-slate-400 space-y-4 leading-relaxed text-center md:text-left">
@@ -157,7 +157,7 @@ const AboutPage = () => {
           </div>
         </motion.section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

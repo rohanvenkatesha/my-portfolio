@@ -25,6 +25,7 @@ const LiveDemosSection = () => {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.7 }}
       className="py-24"
+      id="live-demos"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">

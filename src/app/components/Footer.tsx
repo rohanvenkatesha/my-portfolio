@@ -61,7 +61,7 @@ const Footer = () => {
 
         {/* Column 2: Navigation */}
         <div className="flex flex-col items-center">
-          <h4 className="font-semibold text-slate-200 mb-4">Navigate</h4>
+          {/* <h4 className="font-semibold text-slate-200 mb-4">Navigate</h4> */}
           <ul className="space-y-3">
             {navItems.map((item) => (
               <li key={item.name}>
