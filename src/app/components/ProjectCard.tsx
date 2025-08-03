@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import { type Project } from '@/lib/projects';
 
 // --- COLOR LOGIC ---
