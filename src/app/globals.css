@@ -27,7 +27,7 @@ body {
 /* Default background for homepage, etc. */
 .bg-default {
   background-image: 
-    radial-gradient(ellipse at top, rgba(11, 12, 15, 0.475) 0%, rgba(9, 10, 15, 0.87) 70%), 
+    radial-gradient(ellipse at top, rgba(11, 12, 15, 0.612) 0%, rgb(9, 10, 15) 70%), 
     url('/bg/gg2.jpg');
 }
 

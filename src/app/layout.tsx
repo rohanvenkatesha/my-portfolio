@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import BodyClassName from "./components/BodyClassName";
 import Header from "./components/Header"; // Import Header
+import Particles from './components/Particles';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -22,8 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jakarta.className} bg-default`}>
+    <Particles
+    particleColors={['#ffffff', '#ffffff']}
+    particleCount={200}
+    particleSpread={10}
+    speed={0.1}
+    particleBaseSize={100}
+    moveParticlesOnHover={true}
+    alphaParticles={false}
+    disableRotation={false}
+  />
         <BodyClassName className="bg-default" />
-
+ 
         {/* Fixed Navbar */}
         <Header />
 
