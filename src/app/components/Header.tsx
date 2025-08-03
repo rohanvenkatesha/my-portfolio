@@ -102,7 +102,7 @@ const Header = () => {
         </ul>
 
         <div className="hidden md:flex items-center">
-          <Link href="/connect" className="btn btn-primary py-2 px-5 text-sm">Let's Connect</Link>
+          <Link href="/connect" className="btn btn-primary py-2 px-5 text-sm">Let&apos;s Connect</Link>
         </div>
 
         <div className="md:hidden">
@@ -154,7 +154,7 @@ const Header = () => {
                   </AnimatePresence>
                 </li>
               ))}
-              <li><Link href="/connect" className="btn btn-primary mt-6" onClick={() => setIsMenuOpen(false)}>Let's Connect</Link></li>
+              <li><Link href="/connect" className="btn btn-primary mt-6" onClick={() => setIsMenuOpen(false)}>Let&apos;s Connect</Link></li>
             </ul>
           </motion.div>
         )}

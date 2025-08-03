@@ -1,4 +1,4 @@
-import { PlayCircle, Bot } from 'lucide-react';
+import { PlayCircle } from 'lucide-react';
 import { type LucideIcon } from 'lucide-react';
 
 export type Demo = {
