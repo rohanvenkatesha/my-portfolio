@@ -6,6 +6,7 @@ import ProjectsSection from "./components/ProjectsSection";
 import Footer from "./components/Footer";
 import SkillsSection from "./components/SkillsSection";
 import QuoteSection from "./components/QuoteSection";
+// import StickyNoteRecommendation from "./components/StickyNoteRecommendation";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <QuoteSection/>
         <ProjectsSection />
         <SkillsSection/>
+        {/* <StickyNoteRecommendation/> */}
       </main>
       <Footer />
     </>
