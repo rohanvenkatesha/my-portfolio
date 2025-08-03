@@ -2,6 +2,7 @@
 
 // --- TYPE DEFINITIONS ---
 export type WorkExperience = {
+  id: string;
   type: 'work';
   date: string;
   title: string;
@@ -11,17 +12,21 @@ export type WorkExperience = {
 };
 
 export type Education = {
-    type: 'education';
-    date: string;
-    title: string;
-    companyOrSchool: string;
-    description: string;
-    logo?: string;
+  id: string;
+  type: 'education';
+  date: string;
+  title: string;
+  companyOrSchool: string;
+  description: string;
+  logo?: string;
+  gpa?: string;   // <-- Add this line
 };
+
 
 // --- YOUR WORK EXPERIENCE DATA ---
 export const workExperience: WorkExperience[] = [
   {
+    id: 'work-7',
     type: 'work',
     date: "May 2025 – Present",
     title: "Full Stack Developer",
@@ -35,6 +40,7 @@ export const workExperience: WorkExperience[] = [
     workType: "Full-time",
   },
   {
+    id: 'work-6',
     type: 'work',
     date: "Aug 2023 – Apr 2025",
     title: "Student Manager",
@@ -47,6 +53,7 @@ export const workExperience: WorkExperience[] = [
     workType: "Part-time",
   },
   {
+    id: 'work-5',
     type: 'work',
     date: "Aug 2021 – Mar 2023",
     title: "Senior Software Engineer",
@@ -60,6 +67,7 @@ export const workExperience: WorkExperience[] = [
     workType: "Full-time",
   },
   {
+    id: 'work-4',
     type: 'work',
     date: "Nov 2021 – Dec 2021",
     title: "CRC Senior Associate",
@@ -72,6 +80,7 @@ export const workExperience: WorkExperience[] = [
     workType: "Full-time",
   },
   {
+    id: 'work-3',
     type: 'work',
     date: "Jan 2019 – Apr 2021",
     title: "Systems Engineer",
@@ -85,6 +94,7 @@ export const workExperience: WorkExperience[] = [
     workType: "Full-time",
   },
   {
+    id: 'work-2',
     type: 'work',
     date: "Jul 2018 – Nov 2018",
     title: "Software Developer Intern",
@@ -96,6 +106,7 @@ export const workExperience: WorkExperience[] = [
     workType: "Internship",
   },
   {
+    id: 'work-1',
     type: 'work',
     date: "Aug 2017",
     title: "Intern",
@@ -111,19 +122,23 @@ export const workExperience: WorkExperience[] = [
 // --- YOUR EDUCATION DATA ---
 export const education: Education[] = [
   {
+    id: 'edu-2',
     type: 'education',
     date: "Aug 2023 – Apr 2025",
     title: "Masters in Computer Science",
     companyOrSchool: "Western Michigan University, USA",
-    description: `GPA: 3.75 / 4.00. Specializing in advanced algorithms and distributed systems.`,
-    logo: "/logos/wmu.png"
+    description: `Specializing in advanced algorithms and distributed systems.`,
+    logo: "/logos/wmu.png",
+    gpa: "3.75 / 4.00"
   },
   {
+    id: 'edu-1',
     type: 'education',
     date: "Aug 2015 – Jul 2019",
     title: "B.E. in Computer Science & Engineering",
     companyOrSchool: "Visvesvaraya Technological University, India",
-    description: `GPA: 3.3 / 4.0. Graduated with First Class distinction. Focused on core software engineering principles and database management.`,
-    logo: "/logos/vtu.png"
+    description: `Graduated with First Class distinction. Focused on core software engineering principles and database management.`,
+    logo: "/logos/vtu.png",
+    gpa: "3.3 / 4.0"
   },
 ];

@@ -11,6 +11,7 @@ import { workExperience, education } from '@/lib/about-data';
 import { Code, Camera, Milestone, MapPin } from 'lucide-react';
 import BodyClassName from '../components/BodyClassName';
 import ProfileCard from '../components/ProfileCard';
+import { awards } from '@/lib/awards-data';
 
 // --- ANIMATION VARIANTS ---
 const timelineContainerVariants = {
@@ -126,7 +127,10 @@ const AboutPage = () => {
             <AnimatePresence mode="wait">
               <motion.div key={experienceFilter}>
                 {filteredExperience.map((item, index) => (
-                  <TimelineEntry key={item.title + index} {...item} />
+                  <TimelineEntry 
+                    key={item.title + index} 
+                    {...item} 
+                  />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -144,10 +148,39 @@ const AboutPage = () => {
           <h2 className="text-center text-4xl font-bold mb-16 gradient-text">Education</h2>
           <div className="relative">
             {education.map((item, index) => (
-              <TimelineEntry key={index} {...item} />
+              <TimelineEntry 
+                key={item.title + index} 
+                {...item} 
+              />
             ))}
           </div>
         </motion.section>
+
+        {/* --- AWARDS & RECOGNITION SECTION --- */}
+        <motion.section 
+          variants={fadeIn} 
+          initial="initial" 
+          whileInView="animate" 
+          viewport={{ once: true, amount: 0.1 }} 
+          className="my-24 max-w-5xl mx-auto"
+        >
+          <h2 className="text-center text-4xl font-bold mb-16 gradient-text">Awards & Recognition</h2>
+          <div className="relative">
+            {awards.map((item, index) => (
+              <TimelineEntry 
+                key={item.title + index} 
+                id={item.id ?? (item.title + index)} 
+                title={item.title} 
+                companyOrSchool={item.subtitle}
+                date={item.date} 
+                description={item.description}
+                imageUrl={item.image}
+                type="award"
+              />
+            ))}
+          </div>
+        </motion.section>
+        {/* --- END AWARDS SECTION --- */}
 
         {/* --- TRAVEL BIO SECTION --- */}
         <motion.section 

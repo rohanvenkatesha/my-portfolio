@@ -23,27 +23,23 @@ const ConnectPage = () => {
     e.preventDefault();
     setStatus('Sending...');
 
-    // --- FORM SUBMISSION LOGIC ---
-    // In a real application, you would send this data to a serverless function
-    // or an email service like Resend, EmailJS, or Formspree.
-    // For this example, we'll just simulate a successful submission.
     console.log({ name, email, message });
-
-    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     setStatus('Message sent successfully!');
     setName('');
     setEmail('');
     setMessage('');
 
-    setTimeout(() => setStatus(''), 3000); // Clear status after 3 seconds
+    setTimeout(() => setStatus(''), 3000);
   };
 
   return (
     <>
-    <BodyClassName className="bg-default" />
+      <BodyClassName className="bg-default" />
       <Header />
       <main className="px-4 md:px-8 max-w-5xl mx-auto">
+        {/* Hero */}
         <section className="text-center my-16 md:my-24">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -62,16 +58,18 @@ const ConnectPage = () => {
           </motion.p>
         </section>
 
-        <section className="grid md:grid-cols-2 gap-16 items-start">
-          {/* Left Column: Info & Socials */}
+        {/* Content Grid */}
+        <section className="grid md:grid-cols-2 gap-16 items-start text-center md:text-left">
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="flex flex-col items-center md:items-start"
           >
             <h3 className="text-2xl font-bold text-white mb-4">Find me elsewhere</h3>
-            <div className="flex space-x-6">
+            <div className="flex justify-center md:justify-start space-x-6">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -85,21 +83,21 @@ const ConnectPage = () => {
                 </a>
               ))}
             </div>
-            <p className="mt-8 text-slate-400">
+            <p className="mt-8 text-slate-400 max-w-sm md:max-w-none">
               For professional inquiries, please use the form. For everything else, feel free to connect on social media. I&apos;m always happy to talk about code, cameras, or kilometers.
             </p>
           </motion.div>
 
-          {/* Right Column: Contact Form */}
+          {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="space-y-6"
+            className="space-y-6 flex flex-col items-center md:items-start"
           >
-            <div>
+            <div className="w-full max-w-sm md:max-w-none">
               <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Name</label>
               <input
                 type="text"
@@ -110,7 +108,7 @@ const ConnectPage = () => {
                 className="block w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all"
               />
             </div>
-            <div>
+            <div className="w-full max-w-sm md:max-w-none">
               <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email</label>
               <input
                 type="email"
@@ -121,7 +119,7 @@ const ConnectPage = () => {
                 className="block w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all"
               />
             </div>
-            <div>
+            <div className="w-full max-w-sm md:max-w-none">
               <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">Message</label>
               <textarea
                 id="message"
@@ -132,11 +130,11 @@ const ConnectPage = () => {
                 className="block w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all"
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 w-full max-w-sm md:max-w-none">
               <button
                 type="submit"
                 disabled={status === 'Sending...'}
-                className="btn btn-primary mt-4"
+                className="btn btn-primary flex items-center gap-2"
               >
                 <Send size={18} />
                 {status === 'Sending...' ? 'Sending...' : 'Send Message'}
