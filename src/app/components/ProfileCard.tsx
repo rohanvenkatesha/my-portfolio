@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import "@/css/ProfileCard.css";
 import { Instagram } from "lucide-react";
+import Image from "next/image";
 
 interface ProfileCardProps {
   avatarUrl: string;
@@ -20,7 +21,7 @@ interface ProfileCardProps {
   status?: string;
   contactText?: string;
   showUserInfo?: boolean;
-  onContactClick?: () => void;
+  // onContactClick?: () => void;
 }
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -73,7 +74,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   status = "Online",
 //   contactText = "Contact",
   showUserInfo = true,
-  onContactClick,
+  // onContactClick,
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -237,22 +238,29 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     const pointerEnterHandler = handlePointerEnter as EventListener;
     const pointerLeaveHandler = handlePointerLeave as EventListener;
     const deviceOrientationHandler = handleDeviceOrientation as EventListener;
+interface DeviceMotionEventWithPermission extends DeviceMotionEvent {
+  requestPermission?: () => Promise<string>;
+}
 
-    const handleClick = () => {
-      if (!enableMobileTilt || location.protocol !== 'https:') return;
-      if (typeof (window.DeviceMotionEvent as any).requestPermission === 'function') {
-        (window.DeviceMotionEvent as any)
-          .requestPermission()
-          .then((state: string) => {
-            if (state === 'granted') {
-              window.addEventListener('deviceorientation', deviceOrientationHandler);
-            }
-          })
-          .catch((err: any) => console.error(err));
-      } else {
-        window.addEventListener('deviceorientation', deviceOrientationHandler);
-      }
-    };
+const handleClick = () => {
+  if (!enableMobileTilt || location.protocol !== 'https:') return;
+
+  const DeviceMotionEventTyped = window.DeviceMotionEvent as unknown as DeviceMotionEventWithPermission;
+
+  if (typeof DeviceMotionEventTyped.requestPermission === 'function') {
+    DeviceMotionEventTyped
+      .requestPermission()
+      .then((state: string) => {
+        if (state === 'granted') {
+          window.addEventListener('deviceorientation', deviceOrientationHandler);
+        }
+      })
+      .catch((err) => console.error(err));
+  } else {
+    window.addEventListener('deviceorientation', deviceOrientationHandler);
+  }
+};
+
 
     card.addEventListener("pointerenter", pointerEnterHandler);
     card.addEventListener("pointermove", pointerMoveHandler);
@@ -302,9 +310,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
-  const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
+  // const handleContactClick = useCallback(() => {
+  //   onContactClick?.();
+  // }, [onContactClick]);
 
   return (
     <div
@@ -317,11 +325,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img
+            <Image
               className="avatar"
               src={avatarUrl}
               alt={`${name || "User"} avatar`}
               loading="lazy"
+              fill
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = "none";
@@ -331,10 +340,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               <div className="pc-user-info">
                 <div className="pc-user-details">
                   <div className="pc-mini-avatar">
-                    <img
+                    <Image
                       src={miniAvatarUrl || avatarUrl}
                       alt={`${name || "User"} mini avatar`}
                       loading="lazy"
+                      width={20}     // <-- required: image width in pixels
+                      height={20}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.opacity = "0.5";

@@ -75,7 +75,7 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-end">
            <h4 className="font-semibold text-slate-200 mb-4">Get In Touch</h4>
            <p className="text-slate-400 text-sm max-w-xs text-center md:text-right">
-             Have a project in mind or want to talk about travel? Let's connect.
+             Have a project in mind or want to talk about travel? Let&apos;s connect.
            </p>
            <Link href="/connect" className="btn btn-primary mt-4">
               Contact Me

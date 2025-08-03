@@ -162,7 +162,7 @@ const AboutPage = () => {
             <div className="text-slate-400 space-y-4 leading-relaxed text-center md:text-left">
               <p>
                 While my days are spent architecting digital solutions, my spirit comes alive on the open road. 
-                For me, motorcycling isn't just a hobby; it's a parallel form of problem-solving. 
+                For me, motorcycling isn&apos;t just a hobby; it&apos;s a parallel form of problem-solving.
                 Navigating a winding mountain pass requires the same focus and foresight as debugging a complex piece of code.
               </p>
               <p>

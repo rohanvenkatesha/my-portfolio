@@ -80,7 +80,7 @@ const Header = () => {
 
         <div className="hidden md:flex items-center">
           <Link href="/connect" className="btn btn-primary py-2 px-5 text-sm">
-            Let's Connect
+            Let&apos;s Connect
           </Link>
         </div>
 
@@ -122,7 +122,7 @@ const Header = () => {
                   className="btn btn-primary mt-4"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Let's Connect
+                  Let&apos;s Connect
                 </Link>
               </li>
             </ul>

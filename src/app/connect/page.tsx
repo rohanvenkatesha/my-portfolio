@@ -50,7 +50,7 @@ const ConnectPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-slate-50 to-slate-400"
           >
-            Let's Build Together
+            Let&apos;s Build Together
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -86,7 +86,7 @@ const ConnectPage = () => {
               ))}
             </div>
             <p className="mt-8 text-slate-400">
-              For professional inquiries, please use the form. For everything else, feel free to connect on social media. I'm always happy to talk about code, cameras, or kilometers.
+              For professional inquiries, please use the form. For everything else, feel free to connect on social media. I&apos;m always happy to talk about code, cameras, or kilometers.
             </p>
           </motion.div>
 

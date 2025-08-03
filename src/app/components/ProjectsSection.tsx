@@ -21,7 +21,7 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 md:py-32">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-slate-50 to-slate-400">Featured Projects</h2>
-        <p className="text-slate-400 mt-3 max-w-xl mx-auto">A selection of my work that I'm most proud of.</p>
+        <p className="text-slate-400 mt-3 max-w-xl mx-auto">A selection of my work that I am most proud of.</p>
       </div>
       <motion.div 
         variants={containerVariants}
