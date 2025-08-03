@@ -4,6 +4,7 @@ import "./globals.css";
 import BodyClassName from "./components/BodyClassName";
 import Header from "./components/Header"; // Import Header
 import Particles from './components/Particles';
+import SplashCursor from "./components/SplashCursor";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -34,7 +35,7 @@ export default function RootLayout({
     disableRotation={false}
   />
         <BodyClassName className="bg-default" />
- 
+        <SplashCursor/>
         {/* Fixed Navbar */}
         <Header />
 
