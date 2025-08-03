@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { MapPin, Code, FileText } from 'lucide-react';
 
 const Hero = () => {
@@ -11,12 +12,26 @@ const Hero = () => {
         animate="visible"
         variants={{
           hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.15 },
-          },
+          visible: { transition: { staggerChildren: 0.15 } },
         }}
       >
-
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="relative w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 rounded-full overflow-hidden border-2 border-white/10 shadow-lg"
+        >
+          <Image
+            src="/logos/prof.jpg"
+            alt="Rohan Venkatesha"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
+        
         <motion.p
           variants={{
             hidden: { opacity: 0, y: -10 },
@@ -28,7 +43,6 @@ const Hero = () => {
           Crafted by <span className="text-slate-200 font-semibold">Rohan Venkatesha</span> • Software Engineer & Explorer
         </motion.p>
         
-        {/* Heading */}
         <motion.h1
           variants={{
             hidden: { opacity: 0, y: 20 },
@@ -42,7 +56,6 @@ const Hero = () => {
           The <span className="gradient-text">Open Road.</span>
         </motion.h1>
 
-        {/* Subtext */}
         <motion.p
           variants={{
             hidden: { opacity: 0, y: 15 },
@@ -54,7 +67,6 @@ const Hero = () => {
           I build high-performance digital experiences and explore the world on two wheels, one frame at a time.
         </motion.p>
 
-        {/* Buttons */}
         <motion.div
           variants={{
             hidden: { opacity: 0, y: 15 },
@@ -79,7 +91,6 @@ const Hero = () => {
           </a>
         </motion.div>
 
-        {/* Resume Link */}
         <motion.div
           variants={{
             hidden: { opacity: 0, y: 10 },
@@ -98,14 +109,12 @@ const Hero = () => {
 <span className="inline-flex items-center justify-center gap-2 
   text-slate-300 font-semibold px-6 py-2.5 rounded-full 
   transition-all duration-300 w-full text-sm md:text-base">
-  <FileText size={18} className="text-slate-300 group-hover:text-[#3D7FF3]" />
-  <span className="group-hover:bg-gradient-to-r group-hover:from-[#3D7FF3] group-hover:to-[#6F49F8] 
+  <FileText size={18} className="text-slate-300 group-hover:text-purple-400" />
+  <span className="group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
     group-hover:bg-clip-text group-hover:text-transparent">
     Download My Resume
   </span>
 </span>
-
-
           </a>
         </motion.div>
       </motion.div>
