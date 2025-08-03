@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import RideCard from '../components/RideCard';
 import { rides, type Ride } from '@/lib/rides';
 import BodyClassName from '../components/BodyClassName';
+import { List, Mountain, Waves, Sun } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,14 +20,18 @@ const containerVariants = {
 const RidesPage = () => {
   const [filter, setFilter] = useState<'All' | Ride['category']>('All');
 
-  const filteredRides = filter === 'All' ? rides : rides.filter(ride => ride.category === filter);
+  const filters = [
+    { name: 'All' as const, icon: List },
+    { name: 'Epic' as const, icon: Mountain },
+    { name: 'Coastal' as const, icon: Waves },
+    { name: 'Cultural' as const, icon: Sun },
+  ];
 
-  const filters: ('All' | Ride['category'])[] = ['All', 'Epic', 'Coastal', 'Cultural'];
+  const filteredRides = filter === 'All' ? rides : rides.filter(ride => ride.category === filter);
 
   return (
     <>
-    <BodyClassName className="bg-rides" />
-      <Header />
+      <BodyClassName className="bg-rides" />
       <main className="px-4 md:px-8 max-w-7xl mx-auto">
         {/* --- HERO SECTION --- */}
         <section className="text-center my-16 md:my-24">
@@ -52,24 +55,37 @@ const RidesPage = () => {
 
         {/* --- FILTERS & RIDES GRID --- */}
         <section>
-          <div className="flex justify-center items-center gap-2 md:gap-4 mb-12 p-2 rounded-full max-w-md mx-auto">
+          {/* --- NEW SEGMENTED CONTROL SWITCH --- */}
+          <div className="relative flex w-full max-w-md mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
             {filters.map(f => (
               <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`w-full text-sm md:text-base px-4 py-2 rounded-full transition-colors duration-300 ${
-                  filter === f
-                    ? 'bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8] text-white font-semibold shadow-md' 
-                    : 'text-slate-300 hover:bg-white/10 border border-white/10'
+                key={f.name}
+                onClick={() => setFilter(f.name)}
+                className={`relative w-full rounded-full py-2.5 text-sm font-medium transition-colors ${
+                  filter === f.name ? 'text-white' : 'text-slate-300 hover:text-white'
                 }`}
               >
-                {f}
+                {/* This is the animated pill */}
+                {filter === f.name && (
+                  <motion.div
+                    layoutId="active-ride-filter"
+                    className="absolute inset-0 bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8]"
+                    style={{ borderRadius: 9999 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+                
+                {/* This is the content (icon and text) */}
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  <f.icon size={16} />
+                  <span>{f.name}</span>
+                </span>
               </button>
             ))}
           </div>
 
           <motion.div
-            key={filter} // Re-trigger animation on filter change
+            key={filter}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -81,7 +97,6 @@ const RidesPage = () => {
           </motion.div>
         </section>
       </main>
-      <Footer />
     </>
   );
 };

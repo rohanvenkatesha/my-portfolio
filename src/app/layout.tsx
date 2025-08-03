@@ -5,6 +5,7 @@ import BodyClassName from "./components/BodyClassName";
 import Header from "./components/Header"; // Import Header
 import Particles from './components/Particles';
 import SplashCursor from "./components/SplashCursor";
+import Footer from "./components/Footer";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
         <main className="pt-24 px-4 md:px-6">
           {children}
         </main>
+        <Footer/>
       </body>
     </html>
   );

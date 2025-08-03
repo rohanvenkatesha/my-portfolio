@@ -3,7 +3,7 @@
 
 import Hero from "./components/Hero";
 import ProjectsSection from "./components/ProjectsSection";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import SkillsSection from "./components/SkillsSection";
 import QuoteSection from "./components/QuoteSection";
 // import StickyNoteRecommendation from "./components/StickyNoteRecommendation";
@@ -18,7 +18,6 @@ export default function Home() {
         <SkillsSection/>
         {/* <StickyNoteRecommendation/> */}
       </main>
-      <Footer />
     </>
   );
 }

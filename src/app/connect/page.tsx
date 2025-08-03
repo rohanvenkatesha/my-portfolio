@@ -2,8 +2,8 @@
 
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 import { Github, Linkedin, Instagram, Send } from 'lucide-react';
 import BodyClassName from '../components/BodyClassName';
 
@@ -37,7 +37,7 @@ const ConnectPage = () => {
   return (
     <>
       <BodyClassName className="bg-default" />
-      <Header />
+      {/* <Header /> */}
       <main className="px-4 md:px-8 max-w-5xl mx-auto">
         {/* Hero */}
         <section className="text-center my-16 md:my-24">
@@ -144,7 +144,7 @@ const ConnectPage = () => {
           </motion.form>
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

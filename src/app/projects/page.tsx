@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
 import { projects, type Project } from '@/lib/projects';
 import BodyClassName from '../components/BodyClassName';
+// Import icons for the new filters
+import { List, AppWindow, BrainCircuit, CloudCog, SquareTerminal } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,7 +23,14 @@ const ProjectsPage = () => {
   const [filter, setFilter] = useState<'All' | Project['category']>('All');
   const [visibleCount, setVisibleCount] = useState(INITIAL_LOAD);
 
-  const filters: ('All' | Project['category'])[] = ['All', 'Web App', 'CLI Tool'];
+  // Updated filters to be an array of objects with icons
+  const filters = [
+    { name: 'All' as const, icon: List },
+    { name: 'Web App' as const, icon: AppWindow },
+    { name: 'AI/ML' as const, icon: BrainCircuit },
+    { name: 'DevOps' as const, icon: CloudCog },
+    { name: 'CLI Tool' as const, icon: SquareTerminal },
+  ];
 
   const filteredProjects = projects.filter(project => 
     filter === 'All' || project.category === filter
@@ -37,8 +44,7 @@ const ProjectsPage = () => {
 
   return (
     <>
-    <BodyClassName className="bg-projects" />
-      <Header />
+      <BodyClassName className="bg-projects" />
       <main className="px-4 md:px-8 max-w-7xl mx-auto">
         <section className="text-center my-16 md:my-24">
           <motion.h1 
@@ -59,21 +65,31 @@ const ProjectsPage = () => {
         </section>
 
         <section>
-          <div className="flex justify-center items-center flex-wrap gap-2 md:gap-4 mb-12 p-2 rounded-full max-w-2xl mx-auto">
+          {/* --- NEW SEGMENTED CONTROL SWITCH --- */}
+          <div className="relative flex w-full max-w-2xl mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
             {filters.map(f => (
               <button
-                key={f}
+                key={f.name}
                 onClick={() => {
-                  setFilter(f);
-                  setVisibleCount(INITIAL_LOAD); // Reset count on filter change
+                  setFilter(f.name);
+                  setVisibleCount(INITIAL_LOAD);
                 }}
-                className={`text-sm md:text-base px-4 py-2 rounded-full transition-colors duration-300 ${
-                  filter === f
-                    ? 'bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8] text-white font-semibold shadow-md' 
-                    : 'text-slate-300 hover:bg-white/10 border border-white/10'
+                className={`relative w-full rounded-full py-2.5 text-sm font-medium transition-colors ${
+                  filter === f.name ? 'text-white' : 'text-slate-300 hover:text-white'
                 }`}
               >
-                {f}
+                {filter === f.name && (
+                  <motion.div
+                    layoutId="active-project-filter"
+                    className="absolute inset-0 bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8]"
+                    style={{ borderRadius: 9999 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  <f.icon size={16} />
+                  <span>{f.name}</span>
+                </span>
               </button>
             ))}
           </div>
@@ -94,7 +110,7 @@ const ProjectsPage = () => {
             <div className="mt-16 text-center">
               <button
                 onClick={loadMore}
-                className="bg-white/10 text-white font-semibold py-3 px-8 rounded-full border border-white/20 hover:bg-white/20 transition-colors duration-300"
+                className="btn btn-secondary"
               >
                 Load More
               </button>
@@ -102,7 +118,6 @@ const ProjectsPage = () => {
           )}
         </section>
       </main>
-      <Footer />
     </>
   );
 };
