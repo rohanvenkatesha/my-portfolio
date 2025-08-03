@@ -56,7 +56,7 @@ const Header = () => {
       >
         <Link href="/" onClick={() => setIsMenuOpen(false)}>
           <Image
-            src="/9.png"
+            src="/logos/9.png"
             alt="Logo"
             width={70}
             height={80}
