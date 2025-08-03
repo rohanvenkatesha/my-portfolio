@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Body Styles */
+/* body {
+  background-color: #090a0f;
+  background-image: radial-gradient(ellipse at top, #1b2735 0%, #0f0909 70%);
+  color: #E2E8F0; /* slate-200 */
+/* } */ 
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #090a0f; /* Fallback color */
+  color: #E2E8F0;
+  
+  /* --- Properties to control ALL background images --- */
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* We remove the specific background-image from the body tag itself */
+}
+
+/* --- Page-Specific Background Classes --- */
+
+/* Default background for homepage, etc. */
+.bg-default {
+  background-image: 
+    radial-gradient(ellipse at top, rgba(11, 12, 15, 0.475) 0%, rgba(9, 10, 15, 0.87) 70%), 
+    url('/bg/gg2.jpg');
+}
+
+/* Background for the Rides page */
+.bg-rides {
+  background-image: 
+    radial-gradient(ellipse at top, rgba(27, 39, 53, 0.055) 0%, rgba(9, 10, 15, 0.679) 70%), 
+    url('/bg/gg6.jpg');
+}
+
+/* Background for the Projects page */
+.bg-projects {
+  background-image: 
+    radial-gradient(ellipse at top, rgba(27, 39, 53, 0.055) 0%, rgba(9, 10, 15, 0.29) 70%), 
+    url('/bg/gg1.jpg');
+}
+
+.bg-about {
+  background-image: 
+    radial-gradient(ellipse at top, rgba(27, 39, 53, 0.055) 0%, rgba(9, 10, 15, 0.29) 70%), 
+    url('/bg/gg5.jpg');
+}
+
+/* ... keep the rest of your css (.btn, .gradient-text, etc.) */
+/* Reusable Component Classes */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-cyan-400;
+  }
+/* ... inside the @layer components block ... */
+.btn-primary {
+  /* Change px-8 to be responsive */
+  @apply bg-gradient-to-r bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8] text-white shadow-lg py-3 px-6 md:px-8 hover:scale-105 disabled:opacity-50 disabled:scale-100;
+}
+.btn-secondary {
+  /* Change px-8 to be responsive */
+  @apply bg-white/10 text-white border border-white/20 py-3 px-6 md:px-8 hover:bg-white/20;
+}
+}
+
+/* Utility Classes */
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-400 to-cyan-300;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animated Border for Resume Button */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+.glowing-border {
+  position: relative;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle),
+    #090a0f,
+    #000000,
+    #000000bb,
+    #1d1825,
+    #1b2735,
+    #090a0f
+  );
+  animation: border-spin 5s linear infinite;
 }

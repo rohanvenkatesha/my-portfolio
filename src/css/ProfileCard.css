@@ -1,0 +1,158 @@
+/* --- Main Wrapper & Perspective --- */
+.pc-card-wrapper {
+  --card-opacity: 0;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  perspective: 1000px;
+  border-radius: 1.25rem; /* 20px */
+  position: relative;
+  overflow: hidden;
+  width: 20rem; /* 320px */
+  height: 25rem; /* 400px */
+  margin: 0 auto;
+}
+
+.pc-card-wrapper.active {
+  --card-opacity: 1;
+  transition: --card-opacity 0.3s ease-in-out;
+}
+
+/* --- The Card Itself --- */
+.pc-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.pc-card.active {
+  transition: transform 0.1s linear;
+}
+
+/* --- Card Content & Layers --- */
+.pc-inside {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--inner-gradient);
+  transform: translateZ(0); /* Promotes to its own layer */
+}
+
+.pc-shine, .pc-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.pc-shine {
+  background: var(--behind-gradient);
+  opacity: var(--card-opacity);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.pc-glare {
+  background: radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y),
+    hsla(0, 0%, 100%, 0.5) 0%,
+    hsla(0, 0%, 100%, 0) 60%);
+  opacity: var(--card-opacity);
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* --- Avatar & User Info --- */
+.pc-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+}
+
+.pc-user-info {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateZ(20px); /* Lifts the user info */
+}
+
+.pc-user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pc-mini-avatar {
+  width: 2.5rem; /* 40px */
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.pc-mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-handle, .pc-status {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.pc-handle {
+  font-size: 0.875rem;
+}
+
+.pc-status {
+  font-size: 0.75rem;
+  color: #0acd4e; /* gray-400 */
+}
+
+.pc-contact-btn {
+  /* Make it a flex container to center the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Sizing and Shape */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Make it a circle */
+
+  /* Colors and Effects */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.pc-contact-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
