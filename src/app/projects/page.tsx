@@ -69,7 +69,7 @@ const ProjectsPage = () => {
                 }}
                 className={`text-sm md:text-base px-4 py-2 rounded-full transition-colors duration-300 ${
                   filter === f
-                    ? 'bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-semibold shadow-md' 
+                    ? 'bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8] text-white font-semibold shadow-md' 
                     : 'text-slate-300 hover:bg-white/10 border border-white/10'
                 }`}
               >
