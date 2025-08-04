@@ -6,7 +6,7 @@ import { MapPin, Code, FileText } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="text-center py-20 md:py-20">
+    <section className="text-center py-16 md:py-20">
       <motion.div
         initial="hidden"
         animate="visible"
