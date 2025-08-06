@@ -27,10 +27,10 @@ export default function RootLayout({
       <body className={`${jakarta.className} bg-default`}>
         <Particles
           particleColors={["#550fcfd7", "#efe5e5ff"]}
-          particleCount={200}
+          particleCount={400}
           particleSpread={10}
           speed={0.1}
-          particleBaseSize={50}
+          particleBaseSize={70}
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}

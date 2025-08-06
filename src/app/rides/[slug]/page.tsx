@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { rides, type RideDetails, type Ride } from "@/lib/rides";
 import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
@@ -16,7 +15,7 @@ export async function generateStaticParams() {
     .map((ride) => ({ slug: ride.slug! }));
 }
 
-export default async function RidePage({ params }: any) {
+export default async function RidePage({ params }: { params: { slug: string } }) {
   const rideSummary = rides.find((ride) => ride.slug === params.slug);
   if (!rideSummary) notFound();
 
@@ -59,8 +58,8 @@ export default async function RidePage({ params }: any) {
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           {/* --- Main Content (Left 2 cols) --- */}
           <div className="lg:col-span-2 prose prose-invert prose-lg max-w-none text-slate-300">
-            {/* Banner with image + overlay + header */}
-            <AnimatedSection className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 not-prose mb-12">
+            {/* Banner */}
+            <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 not-prose mb-12">
               <Image
                 src={rideSummary.image}
                 alt={rideSummary.title}
@@ -72,22 +71,21 @@ export default async function RidePage({ params }: any) {
               <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-10">
                 <RideHeader rideSummary={rideSummary} />
               </div>
-            </AnimatedSection>
+            </div>
 
             {/* Story */}
-            <AnimatedSection>
+            <div>
               <h2 className="gradient-text py-2">The Story</h2>
               <p>{rideDetails.story}</p>
-            </AnimatedSection>
+            </div>
 
-            {/* Itinerary */}
-            <AnimatedSection className="!mt-16">
+            {/* Itinerary (Animated) */}
+            <div className="!mt-16">
               <h2 className="gradient-text py-5">Day-by-Day Itinerary</h2>
               <div className="space-y-8 not-prose border-l-2 border-white/10 ml-2">
                 {rideDetails.itinerary.map((item, i) => (
                   <AnimatedSection
-                    // Use both day and index to ensure uniqueness if duplicates
-                    key={`${item.day}-${i}`} 
+                    key={`${item.day}-${i}`}
                     delayIndex={i}
                     className="relative pl-8"
                   >
@@ -101,23 +99,23 @@ export default async function RidePage({ params }: any) {
                   </AnimatedSection>
                 ))}
               </div>
-            </AnimatedSection>
+            </div>
 
             {/* Gallery */}
-            <AnimatedSection className="!mt-16">
+            <div className="!mt-16">
               <h2 className="gradient-text py-5">Photo Gallery</h2>
               <RideGallery
                 images={rideDetails.galleryImages}
                 rideTitle={rideSummary.title}
               />
-            </AnimatedSection>
+            </div>
           </div>
 
-          {/* --- Right Column: Video (if any) + Sidebar --- */}
+          {/* --- Right Column: Video + Sidebar --- */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 flex flex-col gap-8">
               {rideDetails.youtubeVideoId && (
-                <AnimatedSection>
+                <div>
                   <h2 className="gradient-text mb-4">Ride Video</h2>
                   <div className="aspect-video rounded-xl overflow-hidden border border-white/10">
                     <iframe
@@ -128,29 +126,25 @@ export default async function RidePage({ params }: any) {
                       className="w-full h-full"
                     />
                   </div>
-                </AnimatedSection>
+                </div>
               )}
 
-              <AnimatedSection>
+              <div>
                 <RideSidebar
                   rideSummary={rideSummary}
                   rideDetails={rideDetails}
                 />
-              </AnimatedSection>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* --- Explore Other Rides BELOW the grid --- */}
-        <AnimatedSection className="mt-20">
+        {/* --- Explore Other Rides --- */}
+        <div className="mt-20">
           <h2 className="gradient-text mb-6">Explore Other Rides</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {ridesToShow.map((r, i) => (
-              <AnimatedSection
-                // Use slug as key, usually unique, fallback to index if needed
-                key={r.slug ?? i} 
-                delayIndex={i}
-              >
+              <div key={r.slug ?? i}>
                 <Link
                   href={`/rides/${r.slug}`}
                   className="group block rounded-lg overflow-hidden border border-white/10 hover:border-cyan-400 transition"
@@ -172,10 +166,10 @@ export default async function RidePage({ params }: any) {
                     </p>
                   </div>
                 </Link>
-              </AnimatedSection>
+              </div>
             ))}
           </div>
-        </AnimatedSection>
+        </div>
       </main>
     </>
   );
