@@ -24,7 +24,7 @@ export type RideDetails = {
 };
 export type Ride = {
   title: string;
-  slug: string;
+  slug?: string;
   description: string;
   image: string;
   distance: number;
@@ -58,7 +58,7 @@ export const rides: Ride[] = [
   },
   {
     title: "Weaving Through Rajasthan's Forts",
-    slug: "rajasthan-forts",
+    // slug: "rajasthan-forts",
     description:
       "A cultural immersion into the land of kings, exploring majestic forts, vibrant markets, and desert roads.",
     image: "/rides/rajasthan.jpg",

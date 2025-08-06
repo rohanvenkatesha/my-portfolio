@@ -17,7 +17,7 @@ const RideCard = ({ ride }: { ride: Ride }) => {
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className="group"
     >
-      <Link href={`/rides/${ride.slug}`}>
+      <Link href={ride.slug ? `/rides/${ride.slug}` : `/rides/stay-tuned`}>
         <div className="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 border border-white/10 shadow-md group-hover:shadow-lg transition-shadow duration-300">
           <motion.div
             className="relative w-full h-full"

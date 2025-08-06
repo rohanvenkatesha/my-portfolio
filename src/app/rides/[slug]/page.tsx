@@ -9,14 +9,22 @@ import RideGallery from "@/app/components/ride/RideGallery";
 import RideSidebar from "@/app/components/ride/RideSideBar";
 import RideHeader from "@/app/components/ride/RideHeader";
 import AnimatedSection from "@/app/components/ride/AnimatedSection";
+import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
-  return rides.map((ride) => ({ slug: ride.slug }));
+  return rides
+    .filter((ride) => !!ride.slug) // only rides with a slug
+    .map((ride) => ({ slug: ride.slug! }));
 }
+
 
 export default async function RidePage({ params }: any) {
   const rideSummary = rides.find((ride) => ride.slug === params.slug);
   if (!rideSummary) notFound();
+
+  if (!rideSummary) {
+    redirect("/rides/stay-tuned");
+  }
 
   let rideDetailsModule;
   try {
