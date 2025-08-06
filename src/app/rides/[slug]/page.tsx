@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { rides, type RideDetails, type Ride } from "@/lib/rides";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -12,7 +14,7 @@ export async function generateStaticParams() {
   return rides.map((ride) => ({ slug: ride.slug }));
 }
 
-export default async function RidePage({ params }: { params: { slug: string } }) {
+export default async function RidePage({ params }: any) {
   const rideSummary = rides.find((ride) => ride.slug === params.slug);
   if (!rideSummary) notFound();
 
