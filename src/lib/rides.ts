@@ -39,7 +39,7 @@ export const rides: Ride[] = [
     slug: "manali-leh-odyssey",
     description:
       "Conquering the high passes of the Himalayas, from lush green valleys to barren, beautiful landscapes.",
-    image: "/rides/manali-leh.jpg",
+    image: "/rides/manali-leh/gallery-6.jpg",
     distance: 1475,
     duration: "10 Days",
     category: "Epic",

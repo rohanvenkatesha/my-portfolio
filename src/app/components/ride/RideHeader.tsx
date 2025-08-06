@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { MapPin, Timer, CheckCircle, CalendarClock } from "lucide-react";
 
 interface RideSummary {
@@ -13,7 +14,17 @@ interface RideSummary {
 
 export default function RideHeader({ rideSummary }: { rideSummary: RideSummary }) {
   const StatusIcon = rideSummary.status === "Completed" ? CheckCircle : CalendarClock;
-  const statusColor = rideSummary.status === "Completed" ? "text-green-400" : "text-purple-400";
+  const statusColor =
+    rideSummary.status === "Completed" ? "text-green-400" : "text-purple-400";
+
+  const titleRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: titleRef,
+    offset: ["start end", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
 
   return (
     <motion.div
@@ -24,6 +35,7 @@ export default function RideHeader({ rideSummary }: { rideSummary: RideSummary }
         visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
       }}
       className="text-white"
+      ref={titleRef}
     >
       <motion.p
         variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
@@ -31,12 +43,15 @@ export default function RideHeader({ rideSummary }: { rideSummary: RideSummary }
       >
         {rideSummary.category} Journey
       </motion.p>
+
       <motion.h1
+        style={{ scale, opacity }}
         variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
         className="text-2xl md:text-3xl font-extrabold tracking-tight mt-1 drop-shadow-xl"
       >
         {rideSummary.title}
       </motion.h1>
+
       <motion.div
         variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
         className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-3 text-slate-300"
