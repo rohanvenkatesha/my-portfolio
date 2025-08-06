@@ -61,15 +61,28 @@ const Header = () => {
 
   return (
     <>
-      <motion.header
-        variants={{ visible: { y: 0 }, hidden: { y: '-120%' } }}
-        animate={hidden ? 'hidden' : 'visible'}
-        transition={{ duration: 0.35, ease: 'easeInOut' }}
-        className="fixed top-4 inset-x-4 md:inset-x-0 max-w-4xl mx-auto z-50 flex items-center justify-between py-2 px-3 bg-black backdrop-blur-lg border border-white/10 rounded-full shadow-lg"
-      >
-        <Link href="/" onClick={() => setIsMenuOpen(false)}>
-          <Image src="/logos/9.png" alt="Logo" width={70} height={80} priority className="cursor-pointer w-10 md:w-16 h-auto" />
-        </Link>
+<motion.header
+  variants={{ visible: { y: 0 }, hidden: { y: '-120%' } }}
+  animate={hidden ? 'hidden' : 'visible'}
+  transition={{ duration: 0.35, ease: 'easeInOut' }}
+className="
+    fixed top-4 inset-x-8 max-w-[90vw] md:inset-x-0 md:max-w-4xl mx-auto z-50
+    flex items-center justify-between py-1.5 md:py-2 px-3
+    bg-black/20 backdrop-blur-lg border border-white/10 rounded-full gradient-shadow
+  "
+  >
+
+<Link href="/" onClick={() => setIsMenuOpen(false)}>
+<Image
+  src="/logos/8.png"
+  alt="Logo"
+  width={70}
+  height={80}
+  priority
+  className="cursor-pointer w-12 md:w-16 h-auto"  // w-8 on mobile (smaller than w-10)
+/>
+</Link>
+
 
         <ul className="hidden md:flex items-center space-x-9 text-slate-300">
           {navItems.map((item) => (

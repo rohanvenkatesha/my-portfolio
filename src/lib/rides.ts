@@ -5,6 +5,10 @@ export type RideItinerary = {
   route: string;
   distance: number;
   description: string;
+  lat?: number;
+  lng?: number;
+  city?: string;
+
 };
 export type RideGear = {
   category: string;
@@ -43,7 +47,7 @@ export const rides: Ride[] = [
     distance: 1475,
     duration: "10 Days",
     category: "Epic",
-    status: "Upcoming",
+    status: "Completed",
   },
   {
     title: "Chasing Monsoons Down the Konkan Coast",

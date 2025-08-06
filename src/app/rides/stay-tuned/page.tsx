@@ -23,8 +23,9 @@ export default function StayTunedPage() {
       {/* Back Button */}
       <Link
         href="/rides"
-        className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
-      >
+    //     className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
+    //   >
+    className="btn btn-primary">
         <ArrowLeft size={18} />
         Back to Rides
       </Link>
