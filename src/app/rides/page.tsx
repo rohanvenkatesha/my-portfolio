@@ -17,6 +17,11 @@ const containerVariants = {
   },
 };
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const RidesPage = () => {
   const [filter, setFilter] = useState<'All' | Ride['category']>('All');
 
@@ -24,17 +29,19 @@ const RidesPage = () => {
     { name: 'All' as const, icon: List },
     { name: 'Epic' as const, icon: Mountain },
     { name: 'Coastal' as const, icon: Waves },
-    { name: 'Cultural' as const, icon: Sun }, // Changed from Sun to Palace for consistency
+    { name: 'Cultural' as const, icon: Sun },
   ];
 
-  const filteredRides = filter === 'All' ? rides : rides.filter(ride => ride.category === filter);
+  const filteredRides =
+    filter === 'All' ? rides : rides.filter((ride) => ride.category === filter);
 
   return (
     <>
       <BodyClassName className="bg-rides" />
       <main className="px-4 md:px-8 max-w-7xl mx-auto">
+        {/* Header */}
         <section className="text-center my-16 md:my-24">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -42,7 +49,7 @@ const RidesPage = () => {
           >
             Stories from the Road
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -52,46 +59,52 @@ const RidesPage = () => {
           </motion.p>
         </section>
 
-        <section>
-          {/* Adjusted max-w for mobile view */}
-          <div className="relative flex w-full max-w-xs sm:max-w-md mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
-            {filters.map(f => (
-              <button
-                key={f.name}
-                onClick={() => setFilter(f.name)}
-                className={`relative w-full rounded-full py-2.5 text-sm font-medium transition-colors ${
-                  filter === f.name ? 'text-white' : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                {filter === f.name && (
-                  <motion.div
-                    layoutId="active-ride-filter"
-                    className="absolute inset-0 bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8]"
-                    style={{ borderRadius: 9999 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  <f.icon size={16} />
-                  {/* Added responsive classes to hide text on mobile */}
-                  <span className="hidden sm:inline">{f.name}</span>
-                </span>
-              </button>
-            ))}
-          </div>
-
+        {/* Filters */}
+<section>
+  <div className="relative flex w-full max-w-xs sm:max-w-md mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
+    {filters.map((f) => (
+      <button
+        key={f.name}
+        onClick={() => setFilter(f.name)}
+        className={`relative w-full rounded-full py-2.5 text-sm font-medium transition-colors ${
+          filter === f.name ? 'text-white' : 'text-slate-300 hover:text-white'
+        }`}
+      >
+        {filter === f.name && (
           <motion.div
-            key={filter}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {filteredRides.map(ride => (
-              <RideCard key={ride.slug} ride={ride} />
-            ))}
-          </motion.div>
-        </section>
+            key={`filter-bg-${f.name}`} // ✅ unique key
+            layoutId="active-ride-filter"
+            className="absolute inset-0 bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8]"
+            style={{ borderRadius: 9999 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          />
+        )}
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          <f.icon size={16} />
+          <span className="hidden sm:inline">{f.name}</span>
+        </span>
+      </button>
+    ))}
+  </div>
+
+  <motion.div
+    key={filter}
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+  >
+    {filteredRides.map((ride) => (
+      <motion.div
+        key={`ride-${ride.slug}`} // ✅ unique key
+        variants={cardVariants}
+      >
+        <RideCard ride={ride} />
+      </motion.div>
+    ))}
+  </motion.div>
+</section>
+
       </main>
     </>
   );
