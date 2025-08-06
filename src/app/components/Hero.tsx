@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { MapPin, Code, FileText } from 'lucide-react';
+import Link from 'next/link';
 
 const Hero = () => {
   return (
@@ -85,13 +86,14 @@ const Hero = () => {
             <Code size={18} />
             Explore Projects
           </a>
-          <a
+          <Link
             href="/rides"
-            className="btn btn-secondary text-sm md:text-base px-5 md:px-8"
+            className="btn btn-secondary text-sm md:text-base px-5 md:px-8 flex items-center gap-2"
           >
             <MapPin size={18} />
             Ride Stories
-          </a>
+          </Link>
+
         </motion.div>
 
         <motion.div
