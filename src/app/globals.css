@@ -6,7 +6,11 @@
   background-image: radial-gradient(ellipse at top, #1b2735 0%, #0f0909 70%);
   color: #E2E8F0; /* slate-200 */
 /* } */ 
-html {
+/* html {
+  scroll-behavior: smooth;
+} */
+
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
 }
 

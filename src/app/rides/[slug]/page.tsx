@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 import { rides, type RideDetails, type Ride } from "@/lib/rides";
 import { notFound, redirect } from "next/navigation";
@@ -16,20 +16,30 @@ export async function generateStaticParams() {
     .map((ride) => ({ slug: ride.slug! }));
 }
 
-export default async function RidePage({ params }: any) {
-  const rideSummary = rides.find((ride) => ride.slug === params.slug);
+// export default async function RidePage({ params }: any) {
+//   const rideSummary = rides.find((ride) => ride.slug === params.slug);
+//   if (!rideSummary) notFound();
+
+export default async function RidePage(
+  props: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await props.params; // ✅ Await params here
+
+  const rideSummary = rides.find((ride) => ride.slug === slug);
   if (!rideSummary) notFound();
+
 
   if (!rideSummary) {
     redirect("/rides/stay-tuned");
   }
 
-  let rideDetailsModule;
-  try {
-    rideDetailsModule = await import(`@/lib/ride-details/${params.slug}`);
-  } catch {
-    notFound();
-  }
+let rideDetailsModule;
+try {
+  rideDetailsModule = await import(`@/lib/ride-details/${slug}`);
+} catch {
+  notFound();
+}
+
   const rideDetails: RideDetails = rideDetailsModule.details;
   if (!rideDetails) notFound();
 
@@ -59,39 +69,36 @@ export default async function RidePage({ params }: any) {
     <>
       <BodyClassName className="bg-about" />
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-10 pb-16">
-        {/* Main content + sidebar grid */}
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-          {/* --- Main Content (Left 2 cols) --- */}
-          <div className="lg:col-span-2 prose prose-invert prose-lg max-w-none text-slate-300">
-            {/* Banner with image + overlay + header */}
-            <AnimatedSection className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 not-prose mb-12">
-              <Image
-                src={rideSummary.image}
-                alt={rideSummary.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-black/60" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-10">
-                <RideHeader rideSummary={rideSummary} />
+        <AnimatedSection>
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* --- Main Content (Left 2 cols) --- */}
+            <div className="lg:col-span-2 prose prose-invert prose-lg max-w-none text-slate-300">
+              {/* Banner with image + overlay + header */}
+              <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 not-prose mb-12">
+                <Image
+                  src={rideSummary.image}
+                  alt={rideSummary.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-black/60" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-10">
+                  <RideHeader rideSummary={rideSummary} />
+                </div>
               </div>
-            </AnimatedSection>
 
-            {/* Story */}
-            <AnimatedSection>
+              {/* Story */}
               <h2 className="gradient-text py-2">The Story</h2>
               <p>{rideDetails.story}</p>
-            </AnimatedSection>
 
-            {/* Itinerary */}
-            <AnimatedSection className="!mt-16">
-              <h2 className="gradient-text py-5">Day-by-Day Itinerary</h2>
+              {/* Itinerary */}
+              <h2 className="gradient-text py-5 mt-16">Day-by-Day Itinerary</h2>
               <div className="space-y-8 not-prose border-l-2 border-white/10 ml-2">
                 {rideDetails.itinerary.map((item, i) => (
                   <AnimatedSection
-                    // Use both day and index to ensure uniqueness if duplicates
-                    key={`${item.day}-${i}`} 
+                    key={`${item.day}-${i}`}
                     delayIndex={i}
                     className="relative pl-8"
                   >
@@ -105,55 +112,47 @@ export default async function RidePage({ params }: any) {
                   </AnimatedSection>
                 ))}
               </div>
-            </AnimatedSection>
 
-            {/* Gallery */}
-            <AnimatedSection className="!mt-16">
-              <h2 className="gradient-text py-5">Photo Gallery</h2>
+              {/* Gallery */}
+              <h2 className="gradient-text py-5 mt-16">Photo Gallery</h2>
               <RideGallery
                 images={rideDetails.galleryImages}
                 rideTitle={rideSummary.title}
               />
-            </AnimatedSection>
-          </div>
+            </div>
 
-          {/* --- Right Column: Video (if any) + Sidebar --- */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 flex flex-col gap-8">
-              {rideDetails.youtubeVideoId && (
-                <AnimatedSection>
-                  <h2 className="gradient-text mb-4">Ride Video</h2>
-                  <div className="aspect-video rounded-xl overflow-hidden border border-white/10">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${rideDetails.youtubeVideoId}`}
-                      title="Ride Video"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                    />
+            {/* --- Right Column: Video (if any) + Sidebar --- */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 flex flex-col gap-8">
+                {rideDetails.youtubeVideoId && (
+                  <div>
+                    <h2 className="gradient-text mb-4">Ride Video</h2>
+                    <div className="aspect-video rounded-xl overflow-hidden border border-white/10">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${rideDetails.youtubeVideoId}`}
+                        title="Ride Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    </div>
                   </div>
-                </AnimatedSection>
-              )}
+                )}
 
-              <AnimatedSection>
                 <RideSidebar
                   rideSummary={rideSummary}
                   rideDetails={rideDetails}
                 />
-              </AnimatedSection>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* --- Explore Other Rides BELOW the grid --- */}
-        <AnimatedSection className="mt-20">
-          <h2 className="gradient-text mb-6">Explore Other Rides</h2>
+          {/* --- Explore Other Rides BELOW the grid --- */}
+          <h2 className="gradient-text mb-6 mt-20">Explore Other Rides</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {ridesToShow.map((r, i) => (
-              <AnimatedSection
-                // Use slug as key, usually unique, fallback to index if needed
-                key={r.slug ?? i} 
-                delayIndex={i}
+              <div
+                key={r.slug ?? i}
               >
                 <Link
                   href={`/rides/${r.slug}`}
@@ -164,6 +163,7 @@ export default async function RidePage({ params }: any) {
                       src={r.image}
                       alt={r.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                       className="object-cover group-hover:scale-105 transition-transform"
                     />
                   </div>
@@ -176,7 +176,7 @@ export default async function RidePage({ params }: any) {
                     </p>
                   </div>
                 </Link>
-              </AnimatedSection>
+              </div>
             ))}
           </div>
         </AnimatedSection>
