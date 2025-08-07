@@ -33,6 +33,10 @@ export default async function RidePage({ params }: any) {
   const rideDetails: RideDetails = rideDetailsModule.details;
   if (!rideDetails) notFound();
 
+   if (!rideDetails) {
+    redirect("/rides/stay-tuned");
+  }
+
   // Select other rides (prev, next, random)
   const currentIndex = rides.findIndex((r) => r.slug === rideSummary.slug);
   const beforeRide = currentIndex > 0 ? rides[currentIndex - 1] : null;
