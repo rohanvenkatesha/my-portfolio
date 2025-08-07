@@ -69,7 +69,7 @@ try {
     <>
       <BodyClassName className="bg-about" />
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-10 pb-16">
-        <AnimatedSection>
+        {/* <AnimatedSection> */}
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
             {/* --- Main Content (Left 2 cols) --- */}
             <div className="lg:col-span-2 prose prose-invert prose-lg max-w-none text-slate-300">
@@ -179,7 +179,7 @@ try {
               </div>
             ))}
           </div>
-        </AnimatedSection>
+        {/* </AnimatedSection> */}
       </main>
     </>
   );
