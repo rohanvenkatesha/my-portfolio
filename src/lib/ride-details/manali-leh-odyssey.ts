@@ -146,5 +146,5 @@ export const details: RideDetails = {
     },
   ],
 
-  youtubeVideoId: "playlist?list=PLTIZrXNTUIWnxUYVSsITl_Op2RswO_ezi"
+//   youtubeVideoId: "playlist?list=PLTIZrXNTUIWnxUYVSsITl_Op2RswO_ezi"
 };

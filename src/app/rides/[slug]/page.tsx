@@ -133,6 +133,7 @@ try {
                         title="Ride Video"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
+                        loading="lazy"
                         className="w-full h-full"
                       />
                     </div>
@@ -163,6 +164,7 @@ try {
                       src={r.image}
                       alt={r.title}
                       fill
+                      loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                       className="object-cover group-hover:scale-105 transition-transform"
                     />
