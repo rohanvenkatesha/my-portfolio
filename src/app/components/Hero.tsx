@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 // --- ICONS ARE IMPORTED HERE ---
-import { MapPin, Code, FileText, Compass, Camera } from 'lucide-react';
+import { MapPin, Code, FileText, PersonStanding} from 'lucide-react';
 import Link from 'next/link';
 
 const Hero = () => {
@@ -71,73 +71,68 @@ const Hero = () => {
           I am a Full Stack Engineer and motorcycle explorer, crafting high-performance digital experiences and capturing the world one frame at a time.
         </motion.p>
         
-        <motion.div 
-          variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
-          className="flex justify-center items-center gap-6 md:gap-8 mb-8 text-md"
-        >
-          <div className="flex items-center gap-2 text-slate-300">
-            <Code className="w-5 h-5 text-cyan-400" />
-            <span>Developer</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-300">
-            <Camera className="w-5 h-5 text-purple-400" />
-            <span>Photographer</span>
-          </div>
-          <div className="flex items-center gap-2 text-slate-300">
-            <Compass className="w-5 h-5 text-green-400" />
-            <span>Explorer</span>
-          </div>
-        </motion.div>
-
-<motion.div
-  variants={{
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0 },
-  }}
-  transition={{ duration: 0.6 }}
-  className="flex justify-center gap-3"
+        <motion.div
+  variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+  className="flex justify-center items-center gap-4 md:gap-6 mb-8 flex-wrap"
 >
-  <Link href="/projects" passHref legacyBehavior>
-    <a className="btn btn-primary text-sm md:text-base px-5 md:px-8 inline-flex items-center gap-2">
-      <Code size={18} />
+  {/* About Me (Blue Glow) */}
+  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+    <Link
+      href="/about"
+      className="px-4 py-2 text-sm md:text-base rounded-full 
+                 border border-blue-400 text-slate-200 font-medium
+                 transition-all duration-300 flex items-center gap-2
+                 hover:shadow-[0_0_12px_rgba(59,130,246,0.7)]"
+    >
+      <PersonStanding className="w-5 h-5 text-blue-400" />
+      About Me
+    </Link>
+  </motion.div>
+
+  {/* Explore Projects (Purple Glow) */}
+  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+    <Link
+      href="/projects"
+      className="px-4 py-2 text-sm md:text-base rounded-full 
+                 border border-purple-400 text-slate-200 font-medium
+                 transition-all duration-300 flex items-center gap-2
+                 hover:shadow-[0_0_12px_rgba(168,85,247,0.7)]"
+    >
+      <Code className="w-5 h-5 text-purple-400" />
       Explore Projects
-    </a>
-  </Link>
+    </Link>
+  </motion.div>
 
-  <Link href="/rides" passHref legacyBehavior>
-    <a className="btn btn-secondary text-sm md:text-base px-5 md:px-8 inline-flex items-center gap-2">
-      <MapPin size={18} />
+  {/* Ride Stories (Red Glow) */}
+  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+    <Link
+      href="/rides"
+      className="px-4 py-2 text-sm md:text-base rounded-full 
+                 border border-red-400 text-slate-200 font-medium
+                 transition-all duration-300 flex items-center gap-2
+                 hover:shadow-[0_0_12px_rgba(239,68,68,0.7)]"
+    >
+      <MapPin className="w-5 h-5 text-red-400" />
       Ride Stories
-    </a>
-  </Link>
-</motion.div>
+    </Link>
+  </motion.div>
 
-<motion.div
-  variants={{
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
-  }}
-  transition={{ duration: 0.5 }}
-  className="mt-8 inline-block"
->
-  <a
+  {/* Download Resume (Green Glow) */}
+  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+    <a
     href="https://drive.google.com/file/d/1zf7aHGIk7Qymr7dP7ilbvY25KHc0bVIb/view"
-    download="RohanVenkatesha-Resume.pdf"
     target="_blank"
     rel="noopener noreferrer"
-    className="glowing-border group inline-block rounded-full"
-  >
-    <span className="inline-flex items-center justify-center gap-2 bg-[#090a0f] text-slate-300 font-semibold px-6 py-2.5 rounded-full group-hover:bg-[#111827] transition-all duration-300 w-full text-sm md:text-base">
-      <FileText
-        size={18}
-        className="text-slate-300 transition-colors group-hover:text-cyan-400"
-      />
-      <span className="transition-colors group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300 group-hover:bg-clip-text group-hover:text-transparent">
-        Download My Resume
-      </span>
-    </span>
-  </a>
-</motion.div>
+      className="px-4 py-2 text-sm md:text-base rounded-full 
+                 border border-green-400 text-slate-200 font-medium
+                 transition-all duration-300 flex items-center gap-2
+                 hover:shadow-[0_0_12px_rgba(34,197,94,0.7)]"
+    >
+      <FileText className="w-5 h-5 text-green-400" />
+      Download Resume
+    </a>
+    </motion.div>
+    </motion.div>
       </motion.div>
     </section>
   );
