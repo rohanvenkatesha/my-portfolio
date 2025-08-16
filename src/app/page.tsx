@@ -16,6 +16,7 @@ export default function Home() {
         <Hero />
         <QuoteSection/>
         <LiveDemosSection/>
+        
         <ProjectsSection />
         <SkillsSection/>
         {/* <StickyNoteRecommendation/> */}

@@ -33,6 +33,7 @@ const Header = () => {
     { name: 'Rides', href: '/rides' },
   ];
   const aboutSubLinks = [
+    { name: 'About Me', href: '/about' },
     { name: 'Work Experience', href: '/about#experience' },
     { name: 'Education', href: '/about#education' },
     { name: 'Awards', href: '/about#awards' },
@@ -41,6 +42,7 @@ const Header = () => {
 
   // --- Projects Page Sublinks ---
   const projectSubLinks = [
+    { name: 'All Projects', href: '/projects' },
     { name: 'Featured Projects', href: '/#projects' },
     { name: 'Live Demos', href: '/#live-demos' },
   ];

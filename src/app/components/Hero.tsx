@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { MapPin, Code, FileText } from 'lucide-react';
+// --- ICONS ARE IMPORTED HERE ---
+import { MapPin, Code, FileText, Compass, Camera } from 'lucide-react';
 import Link from 'next/link';
 
 const Hero = () => {
@@ -41,9 +42,8 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
           className="text-sm md:text-base text-slate-400 mb-3 tracking-wide uppercase"
         >
-          Crafted by <span className="text-slate-200 font-semibold">Rohan Venkatesha</span> 
+          Crafted by <span className="text-slate-200 font-semibold">Rohan Venkatesha</span>
           <span className="hidden sm:inline"> • </span>
-          {/* This responsive <br> tag creates a line break only on mobile */}
           <br className="sm:hidden" /> Software Engineer & Explorer
         </motion.p>
         
@@ -66,62 +66,78 @@ const Hero = () => {
             visible: { opacity: 1, y: 0 },
           }}
           transition={{ duration: 0.7 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-12"
+          className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-8"
         >
-          I build high-performance digital experiences and explore the world on two wheels, one frame at a time.
+          I am a Full Stack Engineer and motorcycle explorer, crafting high-performance digital experiences and capturing the world one frame at a time.
         </motion.p>
-
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 15 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center gap-3"
+        
+        <motion.div 
+          variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
+          className="flex justify-center items-center gap-6 md:gap-8 mb-8 text-md"
         >
-          <a
-            href="/projects"
-            className="btn btn-primary text-sm md:text-base px-5 md:px-8"
-          >
-            <Code size={18} />
-            Explore Projects
-          </a>
-          <Link
-            href="/rides"
-            className="btn btn-secondary text-sm md:text-base px-5 md:px-8 flex items-center gap-2"
-          >
-            <MapPin size={18} />
-            Ride Stories
-          </Link>
-
+          <div className="flex items-center gap-2 text-slate-300">
+            <Code className="w-5 h-5 text-cyan-400" />
+            <span>Developer</span>
+          </div>
+          <div className="flex items-center gap-2 text-slate-300">
+            <Camera className="w-5 h-5 text-purple-400" />
+            <span>Photographer</span>
+          </div>
+          <div className="flex items-center gap-2 text-slate-300">
+            <Compass className="w-5 h-5 text-green-400" />
+            <span>Explorer</span>
+          </div>
         </motion.div>
 
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 10 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.5 }}
-          className="mt-8 inline-block"
-        >
-          <a
-            href="https://drive.google.com/file/d/1zf7aHGIk7Qymr7dP7ilbvY25KHc0bVIb/view"
-            download="RohanVenkatesha-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glowing-border group inline-block rounded-full"
-          >
-<span className="inline-flex items-center justify-center gap-2 
-  text-slate-300 font-semibold px-6 py-2.5 rounded-full 
-  transition-all duration-300 w-full text-sm md:text-base">
-  <FileText size={18} className="text-slate-300 group-hover:text-purple-400" />
-  <span className="group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300
-    group-hover:bg-clip-text group-hover:text-transparent">
-    Download My Resume
-  </span>
-</span>
-          </a>
-        </motion.div>
+<motion.div
+  variants={{
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0 },
+  }}
+  transition={{ duration: 0.6 }}
+  className="flex justify-center gap-3"
+>
+  <Link href="/projects" passHref legacyBehavior>
+    <a className="btn btn-primary text-sm md:text-base px-5 md:px-8 inline-flex items-center gap-2">
+      <Code size={18} />
+      Explore Projects
+    </a>
+  </Link>
+
+  <Link href="/rides" passHref legacyBehavior>
+    <a className="btn btn-secondary text-sm md:text-base px-5 md:px-8 inline-flex items-center gap-2">
+      <MapPin size={18} />
+      Ride Stories
+    </a>
+  </Link>
+</motion.div>
+
+<motion.div
+  variants={{
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  }}
+  transition={{ duration: 0.5 }}
+  className="mt-8 inline-block"
+>
+  <a
+    href="https://drive.google.com/file/d/1zf7aHGIk7Qymr7dP7ilbvY25KHc0bVIb/view"
+    download="RohanVenkatesha-Resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="glowing-border group inline-block rounded-full"
+  >
+    <span className="inline-flex items-center justify-center gap-2 bg-[#090a0f] text-slate-300 font-semibold px-6 py-2.5 rounded-full group-hover:bg-[#111827] transition-all duration-300 w-full text-sm md:text-base">
+      <FileText
+        size={18}
+        className="text-slate-300 transition-colors group-hover:text-cyan-400"
+      />
+      <span className="transition-colors group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-300 group-hover:bg-clip-text group-hover:text-transparent">
+        Download My Resume
+      </span>
+    </span>
+  </a>
+</motion.div>
       </motion.div>
     </section>
   );

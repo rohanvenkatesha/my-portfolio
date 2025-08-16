@@ -2,8 +2,6 @@
 
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
 import { Github, Linkedin, Instagram, Send } from 'lucide-react';
 import BodyClassName from '../components/BodyClassName';
 
@@ -23,21 +21,34 @@ const ConnectPage = () => {
     e.preventDefault();
     setStatus('Sending...');
 
-    console.log({ name, email, message });
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    setStatus('Message sent successfully!');
-    setName('');
-    setEmail('');
-    setMessage('');
+      const data = await res.json();
 
-    setTimeout(() => setStatus(''), 3000);
+      if (res.ok) {
+        setStatus('Message sent!');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus(data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Failed to send message.");
+    }
+
+    setTimeout(() => setStatus(""), 4000);
   };
 
   return (
     <>
       <BodyClassName className="bg-default" />
-      {/* <Header /> */}
       <main className="px-4 md:px-8 max-w-5xl mx-auto">
         {/* Hero */}
         <section className="text-center my-16 md:my-24">
@@ -137,14 +148,12 @@ const ConnectPage = () => {
                 className="btn btn-primary flex items-center gap-2"
               >
                 <Send size={18} />
-                {status === 'Sending...' ? 'Sending...' : 'Send Message'}
+                {status === 'Sending...' ? 'Sending...' : status === 'Message sent!' ? 'Sent!' : 'Send Message'}
               </button>
-              {status && <p className="text-sm text-slate-400">{status}</p>}
             </div>
           </motion.form>
         </section>
       </main>
-      {/* <Footer /> */}
     </>
   );
 };
