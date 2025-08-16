@@ -80,7 +80,7 @@ const Hero = () => {
     <Link
       href="/about"
       className="px-4 py-2 text-sm md:text-base rounded-full 
-                  text-slate-200 font-medium
+                 shadow-[0_0_12px_rgba(59,130,246,0.3)] text-slate-200 font-medium
                  transition-all duration-300 flex items-center gap-2
                  hover:shadow-[0_0_12px_rgba(59,130,246,0.7)]"
     >
@@ -94,7 +94,7 @@ const Hero = () => {
     <Link
       href="/projects"
       className="px-4 py-2 text-sm md:text-base rounded-full 
-                  text-slate-200 font-medium
+                 shadow-[0_0_12px_rgba(168,85,247,0.3)] text-slate-200 font-medium
                  transition-all duration-300 flex items-center gap-2
                  hover:shadow-[0_0_12px_rgba(168,85,247,0.7)]"
     >
@@ -108,7 +108,7 @@ const Hero = () => {
     <Link
       href="/rides"
       className="px-4 py-2 text-sm md:text-base rounded-full 
-                  text-slate-200 font-medium
+                  shadow-[0_0_12px_rgba(239,68,68,0.3)] text-slate-200 font-medium
                  transition-all duration-300 flex items-center gap-2
                  hover:shadow-[0_0_12px_rgba(239,68,68,0.7)]"
     >
@@ -124,7 +124,7 @@ const Hero = () => {
     target="_blank"
     rel="noopener noreferrer"
       className="px-4 py-2 text-sm md:text-base rounded-full 
-                  text-slate-200 font-medium
+                 shadow-[0_0_12px_rgba(34,197,94,0.3)] text-slate-200 font-medium
                  transition-all duration-300 flex items-center gap-2
                  hover:shadow-[0_0_12px_rgba(34,197,94,0.7)]"
     >
