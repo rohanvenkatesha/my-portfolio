@@ -11,7 +11,7 @@ const SkillsSection = () => {
     <section id="skills" className="py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16 py-8">
-          <h2 className="text-4xl font-bold mb-4 gradient-text">
+          <h2 className="text-4xl mb-4 font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-slate-50 to-slate-400">
             Core Competencies
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto">

@@ -7,6 +7,7 @@ import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
 import QuoteSection from "./components/QuoteSection";
 import  LiveDemosSection  from "./components/LiveDemosSection";
+import StatsSection from "./components/StatsSection";
 // import StickyNoteRecommendation from "./components/StickyNoteRecommendation";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
         <Hero />
         <QuoteSection/>
         <LiveDemosSection/>
-        
+        <StatsSection/>
         <ProjectsSection />
         <SkillsSection/>
         {/* <StickyNoteRecommendation/> */}

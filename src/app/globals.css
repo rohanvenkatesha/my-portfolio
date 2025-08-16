@@ -118,3 +118,22 @@ body {
     0 0 20px rgba(0, 0, 0, 0.5),
     0 0 30px rgba(0, 0, 0, 0.4);
 }
+
+
+.frosted-bar {
+  background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  backdrop-filter: blur(14px);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glowing numbers */
+.glow-text {
+  text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+}

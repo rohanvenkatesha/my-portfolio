@@ -88,7 +88,7 @@ const AboutPage = () => {
                 {experienceFilter === f.name && (
                   <motion.div
                     layoutId="active-experience-filter"
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-400"
+                    className="absolute inset-0 bg-gradient-to-r from-[#3D7FF3] to-[#6F49F8]"
                     style={{ borderRadius: 9999 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
