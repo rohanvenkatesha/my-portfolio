@@ -46,7 +46,7 @@ const LiveDemosSection = () => {
             },
           }}
         >
-          {demosToShow.map((demo, idx) => (
+          {demosToShow.map((demo) => (
             <motion.div
               key={demo.title}
               variants={{
