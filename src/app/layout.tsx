@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import Particles from "./components/Particles";
 import Footer from "./components/Footer";
 import ConditionalCursor from "./components/ConditionalCursor"; // NEW
-import  {GlowingBackground}  from "./components/GlowingBackground";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -38,7 +37,6 @@ export default function RootLayout({
         />
         <BodyClassName className="bg-black" />
         <ConditionalCursor /> {/* Cursor logic moved here */}
-        <GlowingBackground/>
         <Header />
         <main className="pt-24 px-4 md:px-6">{children}</main>
         <Footer />
