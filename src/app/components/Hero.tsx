@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="text-center py-40 md:py-40">
+    <section className="text-center py-40 md:py-70">
       <motion.div
         initial="hidden"
         animate="visible"

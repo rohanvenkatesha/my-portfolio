@@ -1,51 +1,37 @@
 'use client';
 
-import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
-import SplashCursor from "./SplashCursor"
-import { GlowingBackground } from "./GlowingBackground"
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import SplashCursor from "./SplashCursor";
+import { GlowingBackground } from "./GlowingBackground";
 
 export default function ConditionalCursor() {
-  const pathname = usePathname()
-  const [isMobile, setIsMobile] = useState(false)
+  const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
 
   // Detect screen size
   useEffect(() => {
-    const checkScreenSize = () => setIsMobile(window.innerWidth <= 768)
-    checkScreenSize()
-    window.addEventListener("resize", checkScreenSize)
-    return () => window.removeEventListener("resize", checkScreenSize)
-  }, [])
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 768);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
-  // Disabled for *all devices*
-  const disabledExactPaths = [
-    "/projects/resume-analyzer",
-  ]
+  // Paths where splash or background should be disabled
+  const disabledExactPaths = ["/projects/resume-analyzer"];
 
-  // Disabled only on desktop
-  const disabledDesktopPrefixes = [
-    "/rides", "/about", "/projects", "/"
-  ]
+  const isExactDisabled = disabledExactPaths.includes(pathname);
 
-  // Disabled only on mobile
-  const disabledMobilePrefixes = [
-    "/rides", "/about", "/projects"
-  ]
+  // Show splash cursor only on mobile, except disabled paths
+  const showSplashCursor = isMobile && !isExactDisabled;
 
-  // --- Logic ---
-  const isExactDisabled = disabledExactPaths.includes(pathname)
-
-  const isPrefixDisabled = isMobile
-    ? disabledMobilePrefixes.some(prefix => pathname.startsWith(prefix))
-    : disabledDesktopPrefixes.some(prefix => pathname.startsWith(prefix))
-
-  const showSplashCursor = !isExactDisabled && !isPrefixDisabled
-  const showGlowingBackground = !isMobile && !isExactDisabled && !isPrefixDisabled
+  // Show glowing background only on desktop, except disabled paths
+  const showGlowingBackground = !isMobile && !isExactDisabled;
 
   return (
     <>
       {showSplashCursor && <SplashCursor />}
       {showGlowingBackground && <GlowingBackground />}
     </>
-  )
+  );
 }

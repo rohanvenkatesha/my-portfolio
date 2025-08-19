@@ -21,11 +21,11 @@ const colorStyles: { [key: string]: { text: string; bg: string; gradientFrom: st
 // --- DATA ---
 const stats = [
   { icon: Briefcase, label: 'Years of Experience', value: 6, color: 'cyan' },
-  { icon: Code, label: 'Projects Built', value: 30, color: 'purple' },
   { icon: GitCommit, label: 'GitHub Commits', value: 1500, color: 'amber' },
-  { icon: Globe, label: 'Countries Travelled', value: 2, color: 'green' },
-  { icon: Milestone, label: 'Miles Covered', value: 20000, color: 'red' },
-  { icon: Coffee, label: 'Cups of Coffee', value: 5000, color: 'blue' },
+  { icon: Code, label: 'Projects Built', value: 30, color: 'purple' },
+  // { icon: Globe, label: 'Countries Travelled', value: 2, color: 'green' },
+  { icon: Milestone, label: 'Miles Covered', value: 40000, color: 'red' },
+  // { icon: Coffee, label: 'Cups of Coffee', value: 5000, color: 'blue' },
 ];
 
 const milestones = [

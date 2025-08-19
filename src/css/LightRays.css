@@ -5,4 +5,11 @@
   pointer-events: none;
   z-index: 3;
   overflow: hidden;
+  background: transparent;
+}
+
+.custom-rays {
+  position: absolute;
+  width: fill;
+  height: fill;
 }

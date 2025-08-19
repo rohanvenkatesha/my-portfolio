@@ -6,6 +6,7 @@ import RideCard from '../components/RideCard';
 import { rides, type Ride } from '@/lib/rides';
 import BodyClassName from '../components/BodyClassName';
 import { List, Mountain, Waves, Sun } from 'lucide-react';
+import QuoteSection from '../components/QuoteSection';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -61,6 +62,8 @@ const RidesPage = () => {
 
         {/* Filters */}
 <section>
+
+  <QuoteSection/>
   <div className="relative flex w-full max-w-xs sm:max-w-md mx-auto items-center justify-between rounded-full bg-white/5 border border-white/10 p-1 mb-12">
     {filters.map((f) => (
       <button

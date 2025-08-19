@@ -8,7 +8,14 @@ const SkillsSection = () => {
   const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <section id="skills" className="py-24">
+        <motion.section
+      id="skills" 
+      className="py-24"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+    >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16 py-8">
           <h2 className="text-4xl font-bold mb-4 gradient-text">
@@ -58,7 +65,7 @@ const SkillsSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

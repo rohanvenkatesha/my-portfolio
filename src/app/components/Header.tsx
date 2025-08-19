@@ -1,181 +1,84 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { useEffect, useState, useRef } from "react";
+// We are using standard anchor `<a>` tags for navigation.
+import { Home, AppWindow, Code, CircleUserRound, Bike, Mail } from "lucide-react";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+// --- Configuration for Navigation Items ---
+// Centralized array for easy management of navigation links.
+// Icons have been updated for better representation.
+const navItems = [
+  { id: "home", label: "Home", href: "/", Icon: Home, color: "text-red-400" },
+  { id: "projects", label: "Projects", href: "/projects", Icon: AppWindow, color: "text-green-400" },
+  { id: "skills", label: "Skills", href: "/#skills", Icon: Code, color: "text-blue-400" },
+  { id: "about", label: "About", href: "/about", Icon: CircleUserRound, color: "text-yellow-400" },
+  { id: "rides", label: "Rides", href: "/rides", Icon: Bike, color: "text-pink-400" },
+  { id: "contact", label: "Contact", href: "/connect", Icon: Mail, color: "text-purple-400" },
+];
+
+/**
+ * DockNav Component
+ * A responsive, auto-hiding navigation dock for websites.
+ * It appears at the top of the viewport and intelligently hides on scroll-down
+ * and reappears on scroll-up for an unobtrusive user experience.
+ */
+export default function DockNav() {
+  // State to control the visibility of the dock.
+  const [isHidden, setIsHidden] = useState(false);
+  // Ref to store the last scroll position to determine scroll direction.
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+    /**
+     * Handles the window's scroll event to show or hide the navigation dock.
+     */
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 150) {
-        setHidden(true);
+
+      // Hide the dock if scrolling down past a certain threshold (100px)
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsHidden(true);
       } else {
-        setHidden(false);
+        // Show the dock if scrolling up
+        setIsHidden(false);
       }
-      lastScrollY = currentScrollY;
+      // Update the last scroll position
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Add scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Cleanup: remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const navItems = [
-    { name: 'Projects', href: '/projects' },
-    { name: 'Skills', href: '/#skills' },
-    { name: 'About', href: '/about' },
-    { name: 'Rides', href: '/rides' },
-  ];
-  const aboutSubLinks = [
-    { name: 'About Me', href: '/about' },
-    { name: 'Work Experience', href: '/about#experience' },
-    { name: 'Education', href: '/about#education' },
-    { name: 'Awards', href: '/about#awards' },
-    { name: 'Code → Kilometers', href: '/about#travelbio' },
-  ];
-
-  // --- Projects Page Sublinks ---
-  const projectSubLinks = [
-    { name: 'All Projects', href: '/projects' },
-    { name: 'Featured Projects', href: '/#projects' },
-    { name: 'Live Demos', href: '/#live-demos' },
-  ];
-  const dropdownVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 10,
-      transition: { duration: 0.2, ease: 'easeInOut' },
-      transitionEnd: { display: 'none' }
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      display: 'block',
-      transition: { duration: 0.3, ease: 'easeInOut' }
-    },
-  } as const; // Add 'as const' here to fix the type error
-
   return (
-    <>
-<motion.header
-  variants={{ visible: { y: 0 }, hidden: { y: '-120%' } }}
-  animate={hidden ? 'hidden' : 'visible'}
-  transition={{ duration: 0.35, ease: 'easeInOut' }}
-className="
-    fixed top-4 inset-x-8 max-w-[90vw] md:inset-x-0 md:max-w-4xl mx-auto z-50
-    flex items-center justify-between py-1.5 md:py-2 px-3
-    bg-black/20 backdrop-blur-lg border border-white/10 rounded-full gradient-shadow
-  "
-  >
-
-<Link href="/" onClick={() => setIsMenuOpen(false)}>
-<Image
-  src="/logos/8.png"
-  alt="Logo"
-  width={70}
-  height={80}
-  priority
-  className="cursor-pointer w-12 md:w-16 h-auto"  // w-8 on mobile (smaller than w-10)
-/>
-</Link>
-
-
-        <ul className="hidden md:flex items-center space-x-9 text-slate-300">
-          {navItems.map((item) => (
-            <motion.li 
-              key={item.name} 
-              className="relative"
-              whileHover="visible"
-              initial="hidden"
-              animate="hidden"
-            >
-              <Link href={item.href} className="text-sm hover:text-white transition-colors duration-300 flex items-center gap-1">
-                {item.name}
-                {(item.name === 'About' || item.name === 'Projects') && <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />}
-              </Link>
-              
-              {(item.name === 'About' || item.name === 'Projects') && (
-                <motion.ul
-                  variants={dropdownVariants}
-                  className="absolute left-0 top-full mt-2 bg-black backdrop-blur-lg border border-white/10 rounded-lg shadow-lg min-w-[200px]"
-                >
-                  {(item.name === 'About' ? aboutSubLinks : projectSubLinks).map((sub) => (
-                    <li key={sub.name}>
-                      <Link href={sub.href} className="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10">{sub.name}</Link>
-                    </li>
-                  ))}
-                </motion.ul>
-              )}
-            </motion.li>
-          ))}
-        </ul>
-
-        <div className="hidden md:flex items-center">
-          <Link href="/connect" className="btn btn-primary py-2 px-5 text-sm">Let&apos;s Connect</Link>
-        </div>
-
-        <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 rounded-full text-slate-300 hover:text-white bg-white/5" aria-label="Toggle menu">
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </motion.header>
-
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 top-[88px] z-40 bg-black/80 backdrop-blur-xl"
-          >
-            <ul className="flex flex-col items-center justify-center h-full space-y-4">
-              {navItems.map((item) => (
-                <li key={item.name} className="text-center w-full">
-                  <div
-                    onClick={() => {
-                      if (item.name === 'About' || item.name === 'Projects') {
-                        setOpenAccordion(openAccordion === item.name ? null : item.name);
-                      } else {
-                        setIsMenuOpen(false);
-                        window.location.href = item.href;
-                      }
-                    }}
-                    className="flex items-center justify-center gap-2 text-2xl text-slate-200 hover:gradient-text transition-colors duration-300 py-2"
-                  >
-                    <span>{item.name}</span>
-                    {(item.name === 'About' || item.name === 'Projects') && <ChevronDown size={20} className={`transition-transform ${openAccordion === item.name ? 'rotate-180' : ''}`} />}
-                  </div>
-
-                  <AnimatePresence>
-                    {openAccordion === item.name && (
-                      <motion.ul
-                        initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                        animate={{ height: 'auto', opacity: 1, marginTop: '8px' }}
-                        exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                        className="overflow-hidden space-y-2"
-                      >
-                        {(item.name === 'About' ? aboutSubLinks : projectSubLinks).map((sub) => (
-                          <li key={sub.name}>
-                            <Link href={sub.href} className="block text-base text-slate-400 hover:text-white" onClick={() => setIsMenuOpen(false)}>{sub.name}</Link>
-                          </li>
-                        ))}
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-              ))}
-              <li><Link href="/connect" className="btn btn-primary mt-6" onClick={() => setIsMenuOpen(false)}>Let&apos;s Connect</Link></li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+    <nav
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-transform duration-300 ease-in-out ${
+        isHidden ? "-translate-y-24" : "translate-y-0"
+      }`}
+      aria-label="Main navigation"
+    >
+      {/* Updated background for a more glassy effect */}
+      <div className="flex items-center gap-2 bg-black/20 backdrop-blur-xl px-4 py-3 rounded-full border border-white/10 shadow-2xl shadow-black/20">
+        {navItems.map((item) => (
+          <a key={item.id} href={item.href}>
+            <div className="group relative flex flex-col items-center cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-1">
+              {/* Tooltip showing the label, appears on hover */}
+              <span className="absolute -top-8 px-2 py-1 text-xs text-white bg-gray-800/80 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                {item.label}
+              </span>
+              {/* Icon container with persistent color and background hover effect */}
+              <div className={`p-3 rounded-full transition-colors duration-300 group-hover:bg-white/10 ${item.color}`}>
+                <item.Icon size={22} />
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </nav>
   );
-};
-
-export default Header;
+}

@@ -14,7 +14,7 @@ import LightRays from "./components/LightRays";
 export default function Home() {
   return (
     <>
-          <div style={{ width: '100%', height: '100%', position: 'absolute' }}>
+      <main>
         <LightRays
           raysOrigin="top-center"
           raysColor="#e1daee"
@@ -27,10 +27,9 @@ export default function Home() {
           distortion={0.05}
           className="custom-rays"
         />
-      </div>
-      <main>
+
         <Hero />
-        <QuoteSection/>
+        {/* <QuoteSection/> */}
         <StatsSection/>
         <LiveDemosSection/>
         <ProjectsSection />

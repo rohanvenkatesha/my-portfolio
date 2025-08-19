@@ -18,7 +18,15 @@ const ProjectsSection = () => {
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
-    <section id="projects" className="py-24 md:py-32">
+        <motion.section
+        id="projects"
+      className="py-24 md:py-32"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+    >
+    {/* <section id="projects" className="py-24 md:py-32"> */}
       <div className="text-center mb-16">
         <h2 className="text-4xl mb-4 font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-slate-50 to-slate-400">Featured Projects</h2>
         <p className="text-slate-400 mt-3 max-w-xl mx-auto">A selection of my work that I am most proud of.</p>
@@ -42,7 +50,8 @@ const ProjectsSection = () => {
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
-    </section>
+    {/* </section> */}
+    </motion.section>
   );
 };
 

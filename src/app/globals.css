@@ -6,9 +6,9 @@
   background-image: radial-gradient(ellipse at top, #1b2735 0%, #0f0909 70%);
   color: #E2E8F0; /* slate-200 */
 /* } */ 
-/* html {
+html {
   scroll-behavior: smooth;
-} */
+}
 
 html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
@@ -30,7 +30,7 @@ body {
 
 /* Default background for homepage, etc. */
 .bg-black {
-  background-image: radial-gradient(ellipse at top, rgba(11, 12, 15, 0.612) 0%, rgb(9, 10, 15) 70%);
+  background-image: radial-gradient(ellipse at top, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);
 }
 
 
@@ -141,4 +141,9 @@ body {
 /* Glowing numbers */
 .glow-text {
   text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+}
+
+
+.custom-rays {
+  position: absolute;
 }

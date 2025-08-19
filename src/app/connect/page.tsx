@@ -9,7 +9,10 @@ const ConnectPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
+
+  const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const socialLinks = [
     { name: 'GitHub', icon: Github, href: 'https://github.com/rohanvenkatesha' },
@@ -19,7 +22,9 @@ const ConnectPage = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setStatus('Sending...');
+    setIsSending(true);
+    setIsSuccess(false);
+    setError('');
 
     try {
       const res = await fetch("/api/sendEmail", {
@@ -28,38 +33,42 @@ const ConnectPage = () => {
         body: JSON.stringify({ name, email, message }),
       });
 
-      const data = await res.json();
-
       if (res.ok) {
-        setStatus('Message sent!');
+        setIsSuccess(true);
         setName('');
         setEmail('');
         setMessage('');
       } else {
-        setStatus(data.message || "Something went wrong.");
+        const data = await res.json().catch(() => ({}));
+        setError(data.message || "Something went wrong.");
       }
-    } catch (error) {
-      console.error(error);
-      setStatus("Failed to send message.");
+    } catch (err) {
+      console.error(err);
+      setError("Failed to send message.");
+    } finally {
+      setIsSending(false);
+      // Reset success/error after 4s
+      setTimeout(() => {
+        setIsSuccess(false);
+        setError('');
+      }, 4000);
     }
-
-    setTimeout(() => setStatus(""), 4000);
   };
 
   return (
     <>
       <BodyClassName className="bg-black" />
-      <main className="px-4 md:px-8 max-w-5xl mx-auto">
+      <main className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
         {/* Hero */}
         <section className="text-center my-16 md:my-24">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-slate-50 to-slate-400"
           >
             Let&apos;s Build Together
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -144,13 +153,17 @@ const ConnectPage = () => {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 w-full max-w-sm md:max-w-none">
               <button
                 type="submit"
-                disabled={status === 'Sending...'}
+                disabled={isSending}
                 className="btn btn-primary flex items-center gap-2"
               >
                 <Send size={18} />
-                {status === 'Sending...' ? 'Sending...' : status === 'Message sent!' ? 'Sent!' : 'Send Message'}
+                {isSending ? "Sending..." : isSuccess ? "Sent!" : "Send Message"}
               </button>
             </div>
+
+            {/* Feedback Messages */}
+            {error && <p className="text-red-400 text-sm">{error}</p>}
+            {isSuccess && <p className="text-green-400 text-sm">Message sent successfully!</p>}
           </motion.form>
         </section>
       </main>

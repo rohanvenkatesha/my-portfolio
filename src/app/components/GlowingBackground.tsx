@@ -16,13 +16,13 @@ const getRandomPosition = (size: number) => ({
   y: Math.random() * (window.innerHeight - size),
 })
 
-// Separate Blob component to safely use hooks
-function Blob({ blob }: { blob: { colorLight: string; colorDark: string; size: number } }) {
+// Custom hook to encapsulate controls creation safely
+function useBlobControls(size: number) {
   const controls = useAnimation()
 
   useEffect(() => {
     const animateBlob = () => {
-      const pos = getRandomPosition(blob.size)
+      const pos = getRandomPosition(size)
       controls.start({
         x: pos.x,
         y: pos.y,
@@ -37,34 +37,35 @@ function Blob({ blob }: { blob: { colorLight: string; colorDark: string; size: n
       })
     }
     animateBlob()
-  }, [controls, blob.size])
+  }, [controls, size])
 
-  return (
-    <motion.div
-      animate={controls}
-      initial={{ x: 0, y: 0, opacity: 0.3, scale: 1 }}
-      className={`
-        pointer-events-none
-        fixed
-        blur-3xl
-        rounded-full
-        z-0
-        ${blob.colorLight} ${blob.colorDark}
-      `}
-      style={{
-        width: blob.size,
-        height: blob.size,
-        filter: 'blur(100px)',
-      }}
-    />
-  )
+  return controls
 }
 
 export function GlowingBackground() {
+  const controlsArray = blobs.map((blob) => useBlobControls(blob.size))
+
   return (
     <>
       {blobs.map((blob, i) => (
-        <Blob key={i} blob={blob} />
+        <motion.div
+          key={i}
+          animate={controlsArray[i]}
+          initial={{ x: 0, y: 0, opacity: 0.3, scale: 1 }}
+          className={`
+            pointer-events-none
+            fixed
+            blur-3xl
+            rounded-full
+            z-0
+            ${blob.colorLight} ${blob.colorDark}
+          `}
+          style={{
+            width: blob.size,
+            height: blob.size,
+            filter: 'blur(100px)',
+          }}
+        />
       ))}
     </>
   )
