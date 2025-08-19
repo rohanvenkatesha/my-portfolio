@@ -64,7 +64,7 @@ export const projects: Project[] = [
     "Tailwind CSS"
   ],
   href: "https://github.com/rohanvenkatesha/AI-Resume-and-Job-Description-Analyzer",
-  live: "http://localhost:3000/projects/resume-analyzer",
+  live: "/projects/resume-analyzer",
   featured: true,
   image: "/projectimages/resumeanalyzer.png"
 },
