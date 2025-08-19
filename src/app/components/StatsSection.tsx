@@ -5,7 +5,7 @@
 
 import { motion, animate, useInView } from 'framer-motion';
 import { useEffect, useRef, useState} from 'react';
-import { Briefcase, Code, Globe, Milestone, GitCommit, Coffee} from 'lucide-react';
+import { Briefcase, Code, Milestone, GitCommit} from 'lucide-react';
 
 // --- COLOR STYLES ---
 const colorStyles: { [key: string]: { text: string; bg: string; gradientFrom: string; gradientTo: string; solidBg: string; } } = {

@@ -5,7 +5,6 @@ import Hero from "./components/Hero";
 import ProjectsSection from "./components/ProjectsSection";
 // import Footer from "./components/Footer";
 import SkillsSection from "./components/SkillsSection";
-import QuoteSection from "./components/QuoteSection";
 import  LiveDemosSection  from "./components/LiveDemosSection";
 import StatsSection from "./components/StatsSection";
 import LightRays from "./components/LightRays";
