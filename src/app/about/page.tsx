@@ -39,7 +39,7 @@ const AboutPage = () => {
   return (
     <>
       <BodyClassName className="bg-black" />
-      <main className="px-4 md:px-8 max-w-7xl mx-auto">
+      <main className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
 
         {/* --- UNIFIED HERO SECTION --- */}
         <motion.section 

@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="text-center py-10 md:py-20">
+    <section className="text-center py-40 md:py-40">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -66,9 +66,9 @@ const Hero = () => {
             visible: { opacity: 1, y: 0 },
           }}
           transition={{ duration: 0.7 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-8"
+          className="max-w-2xl mx-auto text-sm md:text-lg text-slate-400 mb-8"
         >
-          I am a Full Stack Engineer and motorcycle explorer, crafting high-performance digital experiences and capturing the world one frame at a time.
+          I am a Software Engineer and motorcycle explorer, crafting high-performance digital experiences and capturing the world one frame at a time.
         </motion.p>
         
         <motion.div

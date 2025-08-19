@@ -38,7 +38,7 @@ const RidesPage = () => {
   return (
     <>
       <BodyClassName className="bg-black" />
-      <main className="px-4 md:px-8 max-w-7xl mx-auto">
+      <main className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
         {/* Header */}
         <section className="text-center my-16 md:my-24">
           <motion.h1
