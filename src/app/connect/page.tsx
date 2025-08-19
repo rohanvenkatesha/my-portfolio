@@ -48,7 +48,7 @@ const ConnectPage = () => {
 
   return (
     <>
-      <BodyClassName className="bg-default" />
+      <BodyClassName className="bg-black" />
       <main className="px-4 md:px-8 max-w-5xl mx-auto">
         {/* Hero */}
         <section className="text-center my-16 md:my-24">

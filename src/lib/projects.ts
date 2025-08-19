@@ -7,6 +7,7 @@ export type Project = {
   href: string;
   featured: boolean;
   live?: string;
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -25,6 +26,7 @@ export const projects: Project[] = [
   ],
   href: "https://github.com/rohanvenkatesha/Healthcare_Website",
   featured: true,
+  image: "/projectimages/healthcare.png"
 }, 
 {
   title: "AI Coupon Manager (Crowdsourced)",
@@ -43,6 +45,7 @@ export const projects: Project[] = [
   ],
   href: "https://github.com/rohanvenkatesha/Ai_Coupon_Manager_Crowdsourced",
   featured: true,
+  image: "/projectimages/coupons.png"
 },
 
     {
@@ -63,6 +66,7 @@ export const projects: Project[] = [
   href: "https://github.com/rohanvenkatesha/AI-Resume-and-Job-Description-Analyzer",
   live: "http://localhost:3000/projects/resume-analyzer",
   featured: true,
+  image: "/projectimages/resumeanalyzer.png"
 },
   {
     title: "License Plate Detection and Recognition",
@@ -72,6 +76,7 @@ export const projects: Project[] = [
     stack: ["YOLOv5", "PaddleOCR", "Flask", "API Integration"],
     href: "https://github.com/rohanvenkatesha/License-Plate-Detection-using-Yolov5-and-Recognition-using-PaddleOCR",
     featured: true,
+  image: "/projectimages/license.jpeg"
   },
   {
     title: "Retrieval Augmented Generation Chatbot",
@@ -81,6 +86,7 @@ export const projects: Project[] = [
     stack: ["Streamlit", "LangChain", "FAISS", "Google Generative AI", "NLP"],
     href: "https://github.com/rohanvenkatesha/Retrieval-Augmented-Generation-RAG-Chatbot",
     featured: true,
+  image: "/projectimages/rag.jpeg"
   },
 
   {
@@ -96,6 +102,7 @@ export const projects: Project[] = [
   ],
   href: "https://github.com/rohanvenkatesha/foodtruck-website",
   featured: true,
+  image: "/projectimages/foodtruck.png"
 },
 
   {
@@ -106,6 +113,7 @@ export const projects: Project[] = [
     stack: ["AI", "Machine Learning", "Python", "React.js", "Cloud Computing"],
     href: "https://github.com/rohanvenkatesha/ClaimIT",
     featured: false,
+    image: "/projectimages/claimit.jpg"
   },
   {
     title: "Railway Reservation Flask Backend",
@@ -115,6 +123,7 @@ export const projects: Project[] = [
     stack: ["Flask", "REST API", "MySQL", "Backend Development"],
     href: "https://github.com/rohanvenkatesha/Railway-Reservation-Flask-Backend-API-Testing",
     featured: false,
+    image: "/projectimages/railway.jpeg"
   },
   {
     title: "Sarcasm Detection Using NLP",
@@ -124,6 +133,7 @@ export const projects: Project[] = [
     stack: ["Flask", "NLP", "Python", "Web Development"],
     href: "https://github.com/rohanvenkatesha/Sarcasm-Detection-using-Natural-Language-Processing",
     featured: false,
+    image: "/projectimages/sarcasm.jpeg"
   },
   {
     title: "Face Mask Detection Using YOLOv5",
@@ -133,6 +143,7 @@ export const projects: Project[] = [
     stack: ["YOLOv5", "Computer Vision", "Kaggle", "PyTorch"],
     href: "https://github.com/rohanvenkatesha/Face-Mask-Detection-Using-Yolov5",
     featured: false,
+    image: "/projectimages/facemask.jpeg"
   },
   {
     title: "Market Basket Apriori Analysis",
@@ -142,6 +153,7 @@ export const projects: Project[] = [
     stack: ["Apriori", "Data Mining", "Python", "mlxtend"],
     href: "https://github.com/rohanvenkatesha/MarketBasket-Apriori-Analysis",
     featured: false,
+    image: "/projectimages/market.jpeg"
   },
   {
     title: "Hate Speech Detection with Deep Learning",
@@ -151,6 +163,7 @@ export const projects: Project[] = [
     stack: ["Deep Learning", "Django", "Text Classification", "NLP"],
     href: "https://github.com/rohanvenkatesha/Deep-Learning-Approach-for-Hate-Speech-Detection",
     featured: false,
+    image: "/projectimages/hatespeech.png"
   },
   {
     title: "Basic Search Engine",
@@ -160,6 +173,7 @@ export const projects: Project[] = [
     stack: ["Search Engine", "Query Processing", "Indexing", "Information Retrieval"],
     href: "https://github.com/rohanvenkatesha/Basic-Search-Engine",
     featured: false,
+    image: "/projectimages/searchengine.jpeg"
   },
   {
     title: "UDP Client-Server Interaction",
@@ -169,6 +183,7 @@ export const projects: Project[] = [
     stack: ["C Programming", "UDP", "Client-Server", "Networking"],
     href: "https://github.com/rohanvenkatesha/UDP-Client-Server-Interaction",
     featured: false,
+    image: "/projectimages/udp.jpeg"
   },
   {
     title: "Lexical Analyzer for Cminus",
@@ -178,6 +193,7 @@ export const projects: Project[] = [
     stack: ["Lexical Analysis", "PLY", "Tokenization", "Compiler Design"],
     href: "https://github.com/rohanvenkatesha/Lexical-Analyzer-for-Cminus-Programming-Language",
     featured: false,
+    image: "/projectimages/lex.jpeg"
   },
   {
     title: "Parser for Cminus",
@@ -187,6 +203,7 @@ export const projects: Project[] = [
     stack: ["Syntactic Analysis", "Compiler Design", "PLY", "AST"],
     href: "https://github.com/rohanvenkatesha/Parser-for-Cminus-Programming-Language",
     featured: false,
+    image: "/projectimages/parser.jpeg"
   },
   {
     title: "Shell Scripting for System Administration",
@@ -196,6 +213,7 @@ export const projects: Project[] = [
     stack: ["Shell Scripting", "System Admin", "Automation", "Linux"],
     href: "https://github.com/rohanvenkatesha/Shell-Scripting-for-System-Administration",
     featured: false,
+    image: "/projectimages/sysadmin.webp"
   },
   {
     title: "Linked Lists vs. Arrays Comparative Study",
@@ -205,6 +223,7 @@ export const projects: Project[] = [
     stack: ["Python", "Data Structures", "Linked Lists", "Complexity Analysis"],
     href: "https://github.com/rohanvenkatesha/Searching-in-Linked-Lists-and-Arrays",
     featured: false,
+    image: "/projectimages/linkedlist.webp"
   },
   {
     title: "Smart Supply Chain KCS Proposal",
@@ -214,5 +233,6 @@ export const projects: Project[] = [
     stack: ["AI", "Blockchain", "Supply Chain", "IoT", "Ethereum"],
     href: "https://github.com/rohanvenkatesha/Smart-Supply-Chain-Knowledge-Currency-System",
     featured: false,
+    image: "/projectimages/supplychain.jpeg"
   }
 ];

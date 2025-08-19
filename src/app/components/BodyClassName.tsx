@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const BodyClassName = ({ className }: { className: string }) => {
   useEffect(() => {
     // Clear any existing background classes first
-    document.body.classList.remove('bg-default', 'bg-rides', 'bg-projects', 'bg-about');
+    document.body.classList.remove('bg-black','bg-default', 'bg-rides', 'bg-projects', 'bg-about');
     
     // Add the new class when the component mounts
     document.body.classList.add(className);

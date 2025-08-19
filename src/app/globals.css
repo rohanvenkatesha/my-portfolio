@@ -29,6 +29,11 @@ body {
 /* --- Page-Specific Background Classes --- */
 
 /* Default background for homepage, etc. */
+.bg-black {
+  background-image: radial-gradient(ellipse at top, rgba(11, 12, 15, 0.612) 0%, rgb(9, 10, 15) 70%);
+}
+
+
 .bg-default {
   background-image: 
     radial-gradient(ellipse at top, rgba(11, 12, 15, 0.612) 0%, rgb(9, 10, 15) 70%), 

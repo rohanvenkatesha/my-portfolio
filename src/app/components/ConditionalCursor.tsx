@@ -1,27 +1,44 @@
 'use client';
 
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import SplashCursor from "./SplashCursor";
 
 export default function ConditionalCursor() {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
 
-  // List of exact page paths to disable the cursor on
+  // Detect screen size
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 768);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  // Disabled for *all devices*
   const disabledExactPaths = [
     "/projects/resume-analyzer",
   ];
 
-  // List of folder prefixes to disable the cursor on
-  // In the future, just add new paths here, e.g., '/blog'
-  const disabledPrefixes = [
-    "/rides",
+  // Disabled only on desktop
+  const disabledDesktopPrefixes = [
+    "/rides", "/about", "/projects", "/"
   ];
 
-  // New, scalable logic
-  const isPathDisabled = disabledExactPaths.includes(pathname);
-  const isPrefixDisabled = disabledPrefixes.some(prefix => pathname.startsWith(prefix));
+  // Disabled only on mobile
+  const disabledMobilePrefixes = [
+    "/rides", "/about", "/projects"
+  ];
 
-  const showSplashCursor = !isPathDisabled && !isPrefixDisabled;
+  // --- Logic ---
+  const isExactDisabled = disabledExactPaths.includes(pathname);
+
+  const isPrefixDisabled = isMobile
+    ? disabledMobilePrefixes.some(prefix => pathname.startsWith(prefix))
+    : disabledDesktopPrefixes.some(prefix => pathname.startsWith(prefix));
+
+  const showSplashCursor = !isExactDisabled && !isPrefixDisabled;
 
   return showSplashCursor ? <SplashCursor /> : null;
 }

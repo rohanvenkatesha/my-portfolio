@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Particles from "./components/Particles";
 import Footer from "./components/Footer";
 import ConditionalCursor from "./components/ConditionalCursor"; // NEW
+import  {GlowingBackground}  from "./components/GlowingBackground";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jakarta.className} bg-default`}>
+      <body className={`${jakarta.className} bg-black`}>
         <Particles
           particleColors={["#550fcfd7", "#efe5e5ff"]}
           particleCount={400}
@@ -35,8 +36,9 @@ export default function RootLayout({
           alphaParticles={false}
           disableRotation={false}
         />
-        <BodyClassName className="bg-default" />
+        <BodyClassName className="bg-black" />
         <ConditionalCursor /> {/* Cursor logic moved here */}
+        <GlowingBackground/>
         <Header />
         <main className="pt-24 px-4 md:px-6">{children}</main>
         <Footer />
