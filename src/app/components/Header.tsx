@@ -63,7 +63,7 @@ export default function DockNav() {
       aria-label="Main navigation"
     >
       {/* Updated background for a more glassy effect */}
-      <div className="flex items-center gap-2 bg-black/20 backdrop-blur-xl px-4 py-3 rounded-full border border-white/10 shadow-2xl shadow-black/20">
+      <div className="flex items-center gap-2 bg-black/20 backdrop-blur-xl px-0 py-3 rounded-full border border-white/10 shadow-2xl shadow-black/20">
         {navItems.map((item) => (
           <a key={item.id} href={item.href}>
             <div className="group relative flex flex-col items-center cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-1">

@@ -163,7 +163,7 @@ const StatItem = ({ icon: Icon, label, value, color }: any) => {
 const StatsSection = () => {
   return (
     <motion.section
-      className="py-24 px-4"
+      className="py-20 px-4"
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
