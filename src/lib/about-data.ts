@@ -31,12 +31,12 @@ export const workExperience: WorkExperience[] = [
     date: "May 2025 – Present",
     title: "Full Stack Developer",
     companyOrSchool: "Gabriel AI, United States",
-    description: [
-      "Collaborating with cross-functional teams to build scalable digital solutions and responsive UIs using TypeScript and React/Next.js.",
-      "Contributing to technical architecture and early-stage development of an AI-powered SaaS platform using Django, FastAPI, Docker, and AWS (Lambda, S3).",
-      "Participating in design discussions, leveraging object-oriented design principles to ensure code efficiency, scalability, and maintainability across the stack.",
-      "Supporting seamless integration of AI voice agents and automation features to enhance user engagement and overall product capability."
-    ],
+description: [
+  "Contribute to the architecture and early-stage development of an AI-powered SaaS platform using Django, FastAPI, Docker, and AWS (Lambda, S3).",
+  "Built a callback feature for AI voice agents with the team, ensuring 100% of missed customers are automatically re-engaged through a circular loop architecture.",
+  "Deliver scalable web applications and responsive UIs with TypeScript, React, and Next.js, improving overall user experience."
+],
+
     workType: "Full-time",
   },
   {
@@ -59,11 +59,12 @@ export const workExperience: WorkExperience[] = [
     title: "Senior Software Engineer",
     companyOrSchool: "Adetrez Labs, India",
     description: [
-      "Optimized real-time object detection pipelines with YOLOv5 and OpenCV, reducing over 70,000 daily server calls via client-side Redis caching.",
-      "Spearheaded cloud migration of 15+ applications to AWS and Azure, saving monthly costs by $1,200 and saving over $14,000 annually.",
-      "Streamlined CI/CD pipelines using Jenkins, GitLab, Python scripts, and Terraform, improving deployment time from over an hour to under 15 minutes.",
-      "Established structured code reviews and component-based design patterns, saving 100+ hours per quarter through effective collaboration and problem-solving."
-    ],
+  "Optimized real-time object detection pipelines with YOLOv5 and OpenCV, reducing over 70,000 daily server calls via client-side Redis caching.",
+  "Streamlined CI/CD pipelines using Jenkins, Docker, GitLab, and Python scripts, improving deployment time from over an hour to under 15 minutes.",
+  "Reviewed and merged 50+ pull requests, enforcing coding standards and component-based design patterns, saving 100+ hours per quarter.",
+  "Spearheaded migration of 4+ applications to AWS, optimizing infrastructure and reducing costs by over $14,000 annually."
+],
+
     workType: "Full-time",
   },
   {
@@ -85,12 +86,13 @@ export const workExperience: WorkExperience[] = [
     date: "Jan 2019 – Apr 2021",
     title: "Systems Engineer",
     companyOrSchool: "Infosys Limited, India",
-    description: [
-      "Developed scalable RESTful APIs handling 500K+ requests per hour, ensuring security and access control using OAuth2 and JWT.",
-      "Designed and deployed 12+ microservices with Python (FastAPI, Flask, Django) and Node.js, maintaining 99.98% uptime and supporting 1M+ daily requests.",
-      "Accelerated API performance (200ms to 80ms) through load balancing, query tuning, and debugging to enhance system stability.",
-      "Recognized with the 'Insta Award' for driving development efficiency and delivering high-quality code early in the project lifecycle."
-    ],
+description: [
+  "Developed RESTful APIs handling 50K+ requests per hour, implementing rate limiting and access control to ensure reliability and prevent overload.",
+  "Designed and deployed 6+ microservices with Python (Flask, Django) and Node.js, maintaining 99.98% uptime and supporting 1M+ daily requests.",
+  "Automated Xstore deployments across approximately 3,400 stores (around 13,600 registers) globally, managing regional and master/secondary register distinctions to ensure consistent CI/CD builds.",
+  "Accelerated API performance (200ms to 80ms) through load balancing, query tuning, and debugging to enhance system stability."
+],
+
     workType: "Full-time",
   },
   {
