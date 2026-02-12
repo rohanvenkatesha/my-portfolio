@@ -22,6 +22,7 @@ import {
   PenTool,
   Target
 } from 'lucide-react';
+import Image from 'next/image';
 
 const App = () => {
   // Simulator States
@@ -32,15 +33,15 @@ const App = () => {
   const [activeMood, setActiveMood] = useState(0);
   
   // UI & Lab States
-  const [isRecording, setIsRecording] = useState(false);
+  // const [isRecording, setIsRecording] = useState(false);
   const [labUnlocked, setLabUnlocked] = useState(false);
 
   // Scroll Animations
   const { scrollY } = useScroll();
   const heroScale = useTransform(scrollY, [0, 500], [1, 1.2]);
   const heroOpacity = useTransform(scrollY, [0, 500], [1, 0]);
-  const letterboxY = useTransform(scrollY, [0, 500], [0, -100]);
-  const letterboxBottomY = useTransform(scrollY, [0, 500], [0, 100]);
+  // const letterboxY = useTransform(scrollY, [0, 500], [0, -100]);
+  // const letterboxBottomY = useTransform(scrollY, [0, 500], [0, 100]);
 
   // Lighting Styles Config
   const lightingStyles = {
@@ -146,7 +147,7 @@ const App = () => {
 
         <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#050505] z-10" />
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=2000" 
             className="w-full h-full object-cover grayscale opacity-30 scale-105"
             alt="Cinema Learning"
@@ -344,7 +345,7 @@ const App = () => {
                   transition={{ duration: 1 }}
                   className="absolute inset-0"
                 >
-                  <img src={moodBoard[activeMood].img} className="w-full h-full object-cover brightness-50" alt="Mood" />
+                  <Image src={moodBoard[activeMood].img} className="w-full h-full object-cover brightness-50" alt="Mood" />
                   <div className="absolute inset-0 p-12 flex flex-col justify-end gap-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                     <div className="flex gap-8">
                       <div className="w-16 h-16 border border-white/20 p-1">
