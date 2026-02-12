@@ -2,18 +2,19 @@
 
 import { useEffect, useState, useRef } from "react";
 // We are using standard anchor `<a>` tags for navigation.
-import { Home, AppWindow, Code, CircleUserRound, Bike, Mail } from "lucide-react";
+import { Home, AppWindow, Code, CircleUserRound, Bike, Mail, Film } from "lucide-react";
 
 // --- Configuration for Navigation Items ---
 // Centralized array for easy management of navigation links.
 // Icons have been updated for better representation.
 const navItems = [
-  { id: "home", label: "Home", href: "/", Icon: Home, color: "text-red-400" },
+  { id: "home", label: "Home", href: "/", Icon: Home, color: "text-cyan-400" },
   { id: "projects", label: "Projects", href: "/projects", Icon: AppWindow, color: "text-green-400" },
   { id: "skills", label: "Skills", href: "/#skills", Icon: Code, color: "text-blue-400" },
   { id: "about", label: "About", href: "/about", Icon: CircleUserRound, color: "text-yellow-400" },
   { id: "rides", label: "Rides", href: "/rides", Icon: Bike, color: "text-pink-400" },
   { id: "contact", label: "Contact", href: "/connect", Icon: Mail, color: "text-purple-400" },
+  { id: "film", label: "Film", href: "/film", Icon: Film, color: "text-red-400" },
 ];
 
 /**
