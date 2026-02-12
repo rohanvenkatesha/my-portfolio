@@ -4,17 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { 
   Camera, 
   Zap, 
-  Maximize, 
-  Wind, 
-  Settings, 
-  Play, 
-  Layers, 
   Eye,
-  Film,
-  Aperture,
-  Box,
-  ChevronRight,
-  Sparkles,
   ArrowRight,
   Library,
   AlertCircle,
@@ -22,7 +12,6 @@ import {
   Microscope,
   Cpu,
   Monitor,
-  Video,
   Clipboard,
   Users,
   MessageSquare,
@@ -31,9 +20,6 @@ import {
   Smartphone,
   BookOpen,
   PenTool,
-  Map,
-  Calendar,
-  Coffee,
   Target
 } from 'lucide-react';
 
