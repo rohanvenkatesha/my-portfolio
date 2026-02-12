@@ -227,7 +227,7 @@ const App = () => {
             <div className="pl-12 mb-8">
               <p className="font-bold">ROHAN</p>
               <p className="italic text-zinc-500 text-[12px] mb-1">(to himself)</p>
-              <p>"I don't know the rules yet. But I'm going to learn every single one of them."</p>
+              <p>&quot;I don&apos;t know the rules yet. But I&apos;m going to learn every single one of them.&quot;</p>
             </div>
 
             <p className="mb-6 uppercase text-[12px] text-zinc-600 italic">He steps forward. The sound of a snapping twig echoes. CUT TO BLACK.</p>
@@ -593,7 +593,7 @@ const App = () => {
 
               <div className="mt-16 pt-10 border-t border-white/5">
                 <blockquote className="text-xl font-serif italic text-zinc-500 leading-relaxed">
-                  "The director is simply the first audience member. If you don't feel it, they won't either."
+                  &quot;The director is simply the first audience member. If you don&apos;t feel it, they won&apos;t either.&quot;
                 </blockquote>
               </div>
             </motion.div>
