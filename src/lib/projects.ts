@@ -14,7 +14,7 @@ export const projects: Project[] = [
    {
   title: "Healthcare Website",
   description: "A modern, responsive healthcare website featuring AI-powered chatbot, appointment scheduling, patient resources, and provider profiles built with Next.js and Tailwind CSS.",
-  status: "Ongoing",
+  status: "Completed",
   category: "Web App",
   stack: [
     "Next.js",

@@ -98,22 +98,18 @@ const App = () => {
 
   // Animation Variants
   const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   const revealRight = {
-    initial: { opacity: 0, x: -20 },
-    whileInView: { opacity: 1, x: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8 }
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
   };
 
   const staggerContainer = {
-    initial: {},
-    whileInView: { transition: { staggerChildren: 0.1 } }
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1 } }
   };
 
   return (
@@ -149,6 +145,8 @@ const App = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#050505] z-10" />
           <Image 
             src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=2000" 
+            width={2000}
+            height={1125}
             className="w-full h-full object-cover grayscale opacity-30 scale-105"
             alt="Cinema Learning"
           />
@@ -237,8 +235,8 @@ const App = () => {
 
           <motion.div 
             variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             className="space-y-10"
           >
@@ -345,7 +343,7 @@ const App = () => {
                   transition={{ duration: 1 }}
                   className="absolute inset-0"
                 >
-                  <Image src={moodBoard[activeMood].img} className="w-full h-full object-cover brightness-50" alt="Mood" />
+                  <Image src={moodBoard[activeMood].img} width={800} height={450} className="w-full h-full object-cover brightness-50" alt="Mood" />
                   <div className="absolute inset-0 p-12 flex flex-col justify-end gap-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                     <div className="flex gap-8">
                       <div className="w-16 h-16 border border-white/20 p-1">
@@ -546,7 +544,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20">
             {/* Tool Grid */}
-            <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView">
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible">
               <h2 className="text-5xl font-black uppercase tracking-tighter mb-4">THE <span className="text-red-600">TOOLKIT.</span></h2>
               <p className="text-zinc-500 text-sm mb-12 font-mono uppercase tracking-widest">Necessary instruments for the modern auteur.</p>
               <div className="grid grid-cols-2 gap-4">
@@ -567,7 +565,7 @@ const App = () => {
             </motion.div>
 
             {/* Directing Philosophy */}
-            <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" className="bg-zinc-900/20 p-12 rounded-[40px] border border-white/5">
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" className="bg-zinc-900/20 p-12 rounded-[40px] border border-white/5">
               <div className="flex items-center gap-3 text-red-600 mb-8">
                 <Key size={20} />
                 <span className="text-[10px] font-black uppercase tracking-[0.5em]">The Core Philosophy</span>
