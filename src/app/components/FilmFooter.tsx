@@ -94,7 +94,7 @@ const FilmFooter = () => {
             </div>
             
             <h2 className="text-5xl md:text-7xl xl:text-8xl font-[900] tracking-tighter leading-[0.9] uppercase mb-8 md:mb-12">
-              Let's Connect<br/>
+              {"Let's Connect"}<br/>
               {/* <span className="text-white italic">With Me</span> */}
             </h2>
 
