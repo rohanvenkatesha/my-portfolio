@@ -186,7 +186,7 @@ const FilmFooter = () => {
             { name: 'Projects', tag: '02' },
             { name: 'Film', tag: '03' },
             { name: 'Rides', tag: '04' }
-          ].map((item, i) => (
+          ].map((item) => (
             <a 
               key={item.name} href={`/${item.name.toLowerCase()}`}
               className="group relative h-48 md:h-56 bg-zinc-950/80 p-[1px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden transition-all duration-500"
@@ -218,7 +218,7 @@ const FilmFooter = () => {
              <div className="flex flex-row justify-center md:justify-start gap-10">
                <div>
                  <p className="text-[7px] md:text-[8px] font-black tracking-[0.4em] text-zinc-700 uppercase mb-2">Location</p>
-                 <p className="text-[10px] md:text-xs font-bold uppercase text-zinc-400">Bengaluru // IN</p>
+                 <p className="text-[10px] md:text-xs font-bold uppercase text-zinc-400">Michigan // USA</p>
                </div>
                <div>
                  <p className="text-[7px] md:text-[8px] font-black tracking-[0.4em] text-zinc-700 uppercase mb-2">System Time</p>
