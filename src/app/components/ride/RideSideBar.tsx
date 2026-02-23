@@ -12,7 +12,7 @@ import {
   Camera,
   Map as MapIcon,
 } from "lucide-react";
-import StatCard from "../StatCard";
+import StatCard from "./StatCard";
 
 // Lazy load the map only when needed
 const RideMap = dynamic(() => import("./RideMap"), { ssr: false });

@@ -18,7 +18,7 @@ export default function ConditionalCursor() {
   }, []);
 
   // Paths where splash or background should be disabled
-  const disabledExactPaths = ["/projects/resume-analyzer"];
+  const disabledExactPaths = ["/projects/resume-analyzer","/film"];
 
   const isExactDisabled = disabledExactPaths.includes(pathname);
 

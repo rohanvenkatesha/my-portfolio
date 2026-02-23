@@ -1,4 +1,4 @@
-import { PlayCircle } from 'lucide-react';
+import { Film, PlayCircle } from 'lucide-react';
 import { type LucideIcon } from 'lucide-react';
 
 export type Demo = {
@@ -14,6 +14,12 @@ export const demos: Demo[] = [
     description: "See how well a resume matches a job description.",
     href: "/projects/resume-analyzer",
     icon: PlayCircle,
+  },
+    {
+    title: "Flicker Studio",
+    description: "A platform to create and share short films.",
+    href: "https://flicker-studio.vercel.app/",
+    icon: Film,
   },
   // {
   //   title: "AI Portfolio Chatbot",

@@ -23,6 +23,7 @@ import {
   Target
 } from 'lucide-react';
 import Image from 'next/image';
+import FilmFooter from '../components/FilmFooter';
 
 const App = () => {
   // Simulator States
@@ -113,7 +114,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-red-500 overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans selection:bg-red-500 overflow-x-hidden">
       
       {/* HEADER HUD */}
       {/* <header className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[200] mix-blend-difference">
@@ -635,6 +636,7 @@ const App = () => {
           ©2024 ROHAN_VIRTUAL_FILM_LAB | END OF MODULE 01
         </div>
       </footer> */}
+      <FilmFooter />
 
       <style>{`
         .custom-scrollbar::-webkit-scrollbar { width: 2px; }
