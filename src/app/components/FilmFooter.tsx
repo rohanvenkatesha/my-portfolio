@@ -15,6 +15,21 @@ import {
   Loader2
 } from 'lucide-react';
 
+const getLocalInfo = () => {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const city =
+    tz?.split("/").slice(1).join(" ").replace(/_/g, " ") || "Local";
+
+  const time = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZoneName: "short",
+  });
+
+  return { city, time };
+};
+
 const FilmFooter = () => {
   // Form State
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -222,7 +237,10 @@ const FilmFooter = () => {
                </div>
                <div>
                  <p className="text-[7px] md:text-[8px] font-black tracking-[0.4em] text-zinc-700 uppercase mb-2">System Time</p>
-                 <p className="text-[10px] md:text-xs font-bold uppercase tabular-nums text-red-600">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })} IST</p>
+                 {/* <p className="text-[10px] md:text-xs font-bold uppercase tabular-nums text-red-600">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })} EST</p> */}
+                    <p className="text-[10px] md:text-xs font-bold uppercase tabular-nums text-red-600">
+                    {getLocalInfo().time}
+                    </p>              
                </div>
              </div>
              <p className="text-[8px] md:text-[9px] font-black text-zinc-900 uppercase tracking-[0.4em] md:tracking-[0.8em]">
