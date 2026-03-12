@@ -11,7 +11,17 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-   {
+  {
+  "title": "License Plate Detection and Recognition System",
+  "description": "A full-stack AI system that detects and recognizes license plates from videos using YOLOv8 for detection and PaddleOCR for recognition. Features include live WebSocket streaming of detected plates, downloadable processed videos and CSV logs, and a modern Next.js frontend dashboard.",
+  "status": "Completed",
+  "category": "AI/ML",
+  "stack": ["YOLOv8", "PaddleOCR", "FastAPI", "Next.js", "WebSockets", "OpenCV"],
+  "href": "https://github.com/rohanvenkatesha/License_Plate_Recognition_System",
+  "featured": true,
+  "image": "/projectimages/license.jpeg"
+},
+  {
   title: "Healthcare Website",
   description: "A modern, responsive healthcare website featuring AI-powered chatbot, appointment scheduling, patient resources, and provider profiles built with Next.js and Tailwind CSS.",
   status: "Completed",
@@ -68,16 +78,6 @@ export const projects: Project[] = [
   featured: true,
   image: "/projectimages/resumeanalyzer.png"
 },
-  {
-    title: "License Plate Detection and Recognition",
-    description: "Detecting and recognizing license plates from images using YOLOv5 for detection and PaddleOCR for recognition.",
-    status: "Completed",
-    category: "AI/ML",
-    stack: ["YOLOv5", "PaddleOCR", "Flask", "API Integration"],
-    href: "https://github.com/rohanvenkatesha/License-Plate-Detection-using-Yolov5-and-Recognition-using-PaddleOCR",
-    featured: true,
-  image: "/projectimages/license.jpeg"
-  },
   {
     title: "Retrieval Augmented Generation Chatbot",
     description: "Analyzing PDFs and images, allowing users to ask content-based questions using Streamlit, LangChain, and Google Generative AI.",
