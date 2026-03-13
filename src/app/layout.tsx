@@ -55,6 +55,7 @@ import Header from "./components/Header";
 import Particles from "./components/Particles";
 import ConditionalCursor from "./components/ConditionalCursor";
 import FooterController from "./components/FooterController";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -92,6 +93,7 @@ export default function RootLayout({
         <main className="px-4 md:px-0">{children}</main>
 
         <FooterController />
+        <SpeedInsights />
       </body>
     </html>
   );
