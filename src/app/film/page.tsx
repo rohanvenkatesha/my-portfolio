@@ -81,7 +81,8 @@ const App = () => {
     { icon: BookOpen, title: "The Lookbook", cat: "Creative", desc: "Visual references used to communicate tone to DP and Art Dept." },
     { icon: MessageSquare, title: "Director's Monitor", cat: "Control", desc: "A clean feed of the sensor output, separate from crew HUDs." },
     { icon: PenTool, title: "Script Markup", cat: "Process", desc: "Physical or digital (iPad) notes for performance beats." },
-    { icon: Compass, title: "Sun Seeker", cat: "Scouting", desc: "Critical for exterior shoots to track light paths across the day." }
+    { icon: Compass, title: "Sun Seeker", cat: "Scouting", desc: "Critical for exterior shoots to track light paths across the day." },
+    { icon: Zap, title: "ScriptWrite Studio", cat: "Software", desc: "Professional scriptwriting environment with character management and real-time formatting.", link: "https://scriptwritestudio.vercel.app/" }
   ];
 
   const directionsDNA = [
@@ -264,6 +265,17 @@ const App = () => {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div variants={revealRight} className="pt-8">
+              <a 
+                href="https://scriptwritestudio.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 bg-red-600 text-white px-8 py-4 font-black uppercase tracking-[0.2em] text-[10px] hover:bg-white hover:text-black transition-all group"
+              >
+                LAUNCH SCRIPTWRITE STUDIO <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -551,16 +563,33 @@ const App = () => {
               <div className="grid grid-cols-2 gap-4">
                 {directorTools.map((tool, i) => {
                   const ToolIcon = tool.icon;
-                  return (
-                    <div key={i} className="group p-6 bg-zinc-900/30 border border-white/5 rounded-2xl hover:border-red-600/50 transition-all">
+                  const Content = (
+                    <div className={`h-full group p-6 bg-zinc-900/30 border border-white/5 rounded-2xl hover:border-red-600/50 transition-all ${tool.link ? 'cursor-pointer hover:bg-zinc-900/50' : ''}`}>
                       <div className="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-lg mb-4 text-zinc-500 group-hover:text-red-600 transition-colors">
                         <ToolIcon size={18} />
                       </div>
                       <h4 className="text-[11px] font-black uppercase tracking-widest mb-1">{tool.title}</h4>
                       <p className="text-[8px] font-mono text-zinc-500 uppercase tracking-tighter mb-3">{tool.cat}</p>
                       <p className="text-[10px] text-zinc-400 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">{tool.desc}</p>
+                      {tool.link && (
+                        <div className="mt-4 flex items-center gap-2 text-[9px] font-black text-red-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                          Open Tool <ArrowRight size={10} />
+                        </div>
+                      )}
                     </div>
-                  )
+                  );
+
+                  return (
+                    <div key={i}>
+                      {tool.link ? (
+                        <a href={tool.link} target="_blank" rel="noopener noreferrer" className="block h-full">
+                          {Content}
+                        </a>
+                      ) : (
+                        Content
+                      )}
+                    </div>
+                  );
                 })}
               </div>
             </motion.div>
