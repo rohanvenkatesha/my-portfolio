@@ -32,9 +32,10 @@ export const workExperience: WorkExperience[] = [
     title: "Full Stack Developer",
     companyOrSchool: "Gabriel AI, United States",
 description: [
-  "Contribute to the architecture and early-stage development of an AI-powered SaaS platform using Django, FastAPI, Docker, and AWS (Lambda, S3).",
-  "Built a callback feature for AI voice agents with the team, ensuring 100% of missed customers are automatically re-engaged through a circular loop architecture.",
-  "Deliver scalable web applications and responsive UIs with TypeScript, React, and Next.js, improving overall user experience."
+  "Managed bespoke AI voice agents for marketing outreach, deploying a scalable AI-driven SaaS platform using Django & FastAPI.",
+  "Activated a circular loop callback system that recovered 100% of missed leads, boosting client conversion by ensuring zero prospect abandonment.",
+  "Showcased high-performance Next.js analytics dashboards for real-time ROI tracking, improving client engagement.",
+  "Integrated real-time call tracking and analytics pipelines, supporting 100+ concurrent campaigns daily with actionable insights."
 ],
 
     workType: "Full-time",
@@ -58,11 +59,11 @@ description: [
     date: "Aug 2021 – Mar 2023",
     title: "Senior Software Engineer",
     companyOrSchool: "Adetrez Labs, India",
-    description: [
-  "Optimized real-time object detection pipelines with YOLOv5 and OpenCV, reducing over 70,000 daily server calls via client-side Redis caching.",
-  "Streamlined CI/CD pipelines using Jenkins, Docker, GitLab, and Python scripts, improving deployment time from over an hour to under 15 minutes.",
-  "Reviewed and merged 50+ pull requests, enforcing coding standards and component-based design patterns, saving 100+ hours per quarter.",
-  "Spearheaded migration of 4+ applications to AWS, optimizing infrastructure and reducing costs by over $14,000 annually."
+description: [
+  "Orchestrated an end-to-end Smart Reward Management system - a React + Next.js web dashboard using computer vision (YOLOv8) and vehicle tracking via BotSort, handling ~20,000 vehicles/week across fuel stations.",
+  "Automated an Electron billing app and AI-powered stock maintenance system for small supermarkets, eliminating manual work and saving ~6 staff hours/week.",
+  "Streamlined CI/CD pipelines with Jenkins, Docker, and GitLab, reducing deployment time from 1 hour to under 15 minutes.",
+  "Modernized 4 applications on AWS, optimizing infrastructure and reducing operational costs by $114,000+ annually."
 ],
 
     workType: "Full-time",
@@ -87,10 +88,11 @@ description: [
     title: "Systems Engineer",
     companyOrSchool: "Infosys Limited, India",
 description: [
-  "Developed RESTful APIs handling 50K+ requests per hour, implementing rate limiting and access control to ensure reliability and prevent overload.",
-  "Designed and deployed 6+ microservices with Python (Flask, Django) and Node.js, maintaining 99.98% uptime and supporting 1M+ daily requests.",
-  "Automated Xstore deployments across approximately 3,400 stores (around 13,600 registers) globally, managing regional and master/secondary register distinctions to ensure consistent CI/CD builds.",
-  "Accelerated API performance (200ms to 80ms) through load balancing, query tuning, and debugging to enhance system stability."
+  "Implemented a Python-powered analytics platform monitoring sales, inventory, and customer activity in real time across ~500 global retail stores.",
+  "Administered 6+ Python (Flask/Django) microservices supporting POS operations, inventory sync, and reporting, maintaining 99.98% uptime and handling 1M+ daily requests.",
+  "Coordinated Xstore deployments across ~3,400 stores (~13,600 registers) with Python scripts and CI/CD pipelines, ensuring consistent builds globally.",
+  "Enhanced API performance from 200ms to 80ms via load balancing, query tuning, and debugging, improving system stability and transaction speed.",
+  "Executed large-scale data migration from Oracle 11g to 12c, transferring millions of records across retail systems with zero data loss and minimal downtime."
 ],
 
     workType: "Full-time",
@@ -129,7 +131,7 @@ export const education: Education[] = [
     date: "Aug 2023 – Apr 2025",
     title: "Masters in Computer Science",
     companyOrSchool: "Western Michigan University, USA",
-    description: `Specializing in advanced algorithms and distributed systems.`,
+    description: `Specializing in Artificial Intelligence.`,
     logo: "/logos/wmu.png",
     gpa: "3.75 / 4.00"
   },
