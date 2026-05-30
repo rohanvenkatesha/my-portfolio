@@ -120,7 +120,7 @@ const Hero = () => {
   {/* Download Resume (Green Glow) */}
   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
     <a
-    href="https://drive.google.com/file/d/1zf7aHGIk7Qymr7dP7ilbvY25KHc0bVIb/view"
+    href="https://drive.google.com/file/d/17-GVQs_SwpCLk45OmdmF98Ifo1u-ur0u/view"
     target="_blank"
     rel="noopener noreferrer"
       className="px-4 py-2 text-sm md:text-base rounded-full 
