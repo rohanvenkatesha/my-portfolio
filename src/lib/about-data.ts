@@ -26,18 +26,30 @@ export type Education = {
 // --- YOUR WORK EXPERIENCE DATA ---
 export const workExperience: WorkExperience[] = [
   {
+    id: 'work-8',
+    type: 'work',
+    date: "May 2026 – Present",
+    title: "Python AI Engineer",
+    companyOrSchool: "Mitecs INC, Michigan, United States",
+    description: [
+      "Built a production-grade multimodal RAG pipeline for 500+ text and image documents using pgvector database with cosine similarity search, utilizing Gemini embedding and language models on Vertex AI for accurate query responses.",
+      "Engineered a semantic retrieval pipeline across 3M+ tokens using token-aware chunking, neighboring chunk retrieval, and re-rankers, cutting irrelevant context tokens by 50% (from 20K to 10K) to improve precision for Gemini LLM responses.",
+      "Optimized Gemini LLM response time from 60 seconds to 25 seconds (58% speedup) by parallelizing LLM calls, eliminating sequential API bottlenecks, and optimizing retrieval workflows.",
+      "Created a multi-agent AI Mockup Builder using LangGraph to automate client POC creation, coordinating chat-driven Coder and Reviewer agents to generate and refine responsive UI mockups via natural conversation, supporting 20+ client demonstrations."
+    ],
+    workType: "Full-time",
+  },
+  {
     id: 'work-7',
     type: 'work',
-    date: "May 2025 – Present",
+    date: "May 2025 – May 2026",
     title: "Full Stack Developer",
     companyOrSchool: "Gabriel AI, United States",
-description: [
-  "Managed bespoke AI voice agents for marketing outreach, deploying a scalable AI-driven SaaS platform using Django & FastAPI.",
-  "Activated a circular loop callback system that recovered 100% of missed leads, boosting client conversion by ensuring zero prospect abandonment.",
-  "Showcased high-performance Next.js analytics dashboards for real-time ROI tracking, improving client engagement.",
-  "Integrated real-time call tracking and analytics pipelines, supporting 100+ concurrent campaigns daily with actionable insights."
-],
-
+    description: [
+      "Launched AI voice agents using FastAPI and AWS Lambda to automate outbound marketing and customer engagement workflows, handling thousands of automated calls daily.",
+      "Implemented callback automation using a retry queue that recovered 100% of missed customer interactions, directly improving lead conversion rates.",
+      "Delivered high-performance Next.js dashboards delivering real-time call tracking, campaign analytics and operational visibility across 150+ concurrent marketing campaigns."
+    ],
     workType: "Full-time",
   },
   {
@@ -59,13 +71,12 @@ description: [
     date: "Aug 2021 – Mar 2023",
     title: "Senior Software Engineer",
     companyOrSchool: "Adetrez Labs, India",
-description: [
-  "Orchestrated an end-to-end Smart Reward Management system - a React + Next.js web dashboard using computer vision (YOLOv8) and vehicle tracking via BotSort, handling ~20,000 vehicles/week across fuel stations.",
-  "Automated an Electron billing app and AI-powered stock maintenance system for small supermarkets, eliminating manual work and saving ~6 staff hours/week.",
-  "Streamlined CI/CD pipelines with Jenkins, Docker, and GitLab, reducing deployment time from 1 hour to under 15 minutes.",
-  "Modernized 4 applications on AWS, optimizing infrastructure and reducing operational costs by $114,000+ annually."
-],
-
+    description: [
+      "Designed an AI-driven Loyalty Reward Management platform using React, Next.js, YOLOv8, and BoT-SORT; trained computer vision models on 5,000+ custom images to track and process ~20,000 vehicles weekly across fuel stations.",
+      "Implemented Google Cloud Document AI pipelines to extract 15+ structured fields from unstructured business documents, reducing manual processing effort and generating analytics-ready JSON outputs.",
+      "Developed FastAPI microservices on Google Cloud Run using the Model Context Protocol (MCP) alongside prompt engineering, retrieval grounding, and token optimization to maintain fast, stable enterprise AI workflows.",
+      "Reduced API response times from 200ms to 80ms through query optimization and targeted infrastructure improvements."
+    ],
     workType: "Full-time",
   },
   {
@@ -87,14 +98,12 @@ description: [
     date: "Jan 2019 – Apr 2021",
     title: "Systems Engineer",
     companyOrSchool: "Infosys Limited, India",
-description: [
-  "Implemented a Python-powered analytics platform monitoring sales, inventory, and customer activity in real time across ~500 global retail stores.",
-  "Administered 6+ Python (Flask/Django) microservices supporting POS operations, inventory sync, and reporting, maintaining 99.98% uptime and handling 1M+ daily requests.",
-  "Coordinated Xstore deployments across ~3,400 stores (~13,600 registers) with Python scripts and CI/CD pipelines, ensuring consistent builds globally.",
-  "Enhanced API performance from 200ms to 80ms via load balancing, query tuning, and debugging, improving system stability and transaction speed.",
-  "Executed large-scale data migration from Oracle 11g to 12c, transferring millions of records across retail systems with zero data loss and minimal downtime."
-],
-
+    description: [
+      "Automated Oracle Retail Xstore rollouts across ~3,400 stores and 13,600 registers using Python and CI/CD pipelines, drastically reducing deployment overhead.",
+      "Maintained and enhanced 6+ Flask and Django microservices supporting POS operations, inventory synchronization, and reporting.",
+      "Delivered Python-based analytics tools utilizing asynchronous data processing to monitor live sales, inventory fluctuations, and customer activity patterns across ~500 global retail locations, enabling data-driven corporate decision-making.",
+      "Executed enterprise Oracle database migrations by developing Python scripts to programmatically compare schemas and dynamically create missing tables and columns, successfully migrating millions of records with 100% data integrity."
+    ],
     workType: "Full-time",
   },
   {
@@ -122,7 +131,6 @@ description: [
     workType: "Internship",
   }
 ];
-
 // --- YOUR EDUCATION DATA ---
 export const education: Education[] = [
   {
